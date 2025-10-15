@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props" Condition="Exists('..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1005D371-500B-42D1-A9B6-7B732B0F6781}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AMCP</RootNamespace>
+    <AssemblyName>AMCP</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\logo2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Advantech.Adam, Version=8.2.12.0, Culture=neutral, PublicKeyToken=c24039c75946be9c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Advantech.Adam.DLL</HintPath>
+    </Reference>
+    <Reference Include="Advantech.Common, Version=8.2.12.0, Culture=neutral, PublicKeyToken=c24039c75946be9c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Advantech.Common.DLL</HintPath>
+    </Reference>
+    <Reference Include="AForge, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Controls, Version=2.0.0.0, Culture=neutral, PublicKeyToken=a8ac264d1dc6b9d9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Imaging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=ba8ddea9676ca48b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.0.0.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV, Version=4.8.1.5350, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\Emgu.CV.4.8.1.5350\lib\netstandard2.0\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.Bitmap, Version=4.8.1.5350, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\Emgu.CV.Bitmap.4.8.1.5350\lib\netstandard2.0\Emgu.CV.Bitmap.dll</HintPath>
+    </Reference>
+    <Reference Include="GxIAPINET, Version=1.0.2504.9301, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files\GalaxySDK\Development\Samples\CSharp\x86\DoNET\.NET4.0\GxIAPINET.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.SPIIPLUSCOM660Lib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>bin\Debug\Interop.SPIIPLUSCOM660Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.Common, Version=12.0.20.258, Culture=neutral, PublicKeyToken=4544464cdeaab541, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NationalInstruments.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NationalInstruments.VisaNS, Version=8.1.20.222, Culture=neutral, PublicKeyToken=4544464cdeaab541, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\NationalInstruments.VisaNS.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6adad1e807fea099, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenCvSharp4.4.11.0.20250507\lib\net48\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PMCLIB, Version=117.1.1.0, Culture=neutral, PublicKeyToken=5fadd59ccb4c801a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Planar_motor\GridCompSample\GridCompSample\PMCLIB.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Common, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Common.9.0.0\lib\net462\System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.0\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\ACSMotionControl.cs" />
+    <Compile Include="Classes\ArrayForDraw.cs" />
+    <Compile Include="Classes\DataManagement.cs" />
+    <Compile Include="Classes\DoUpdateStatus.cs" />
+    <Compile Include="Classes\Global.cs" />
+    <Compile Include="Classes\ParaSetting.cs" />
+    <Compile Include="Classes\PrintingControl.cs" />
+    <Compile Include="Classes\SMC64x0.cs" />
+    <Compile Include="Dialogs\FrmDiagnose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmDiagnose.Designer.cs">
+      <DependentUpon>FrmDiagnose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmPathPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmPathPreview.Designer.cs">
+      <DependentUpon>FrmPathPreview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmReviewExpLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmReviewExpLog.Designer.cs">
+      <DependentUpon>FrmReviewExpLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmSetting.Designer.cs">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FrmShortcut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FrmShortcut.Designer.cs">
+      <DependentUpon>FrmShortcut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPathRun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPathRun.Designer.cs">
+      <DependentUpon>FrmPathRun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsersForm.Designer.cs">
+      <DependentUpon>FrmUsersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GxBitmap.cs" />
+    <Compile Include="GxDecide.cs" />
+    <Compile Include="Hardware\FrmRotaryValveCtrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hardware\FrmRotaryValveCtrl.designer.cs">
+      <DependentUpon>FrmRotaryValveCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\FrmSyringePump.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hardware\FrmSyringePump.designer.cs">
+      <DependentUpon>FrmSyringePump.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\FrmDCPower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hardware\FrmDCPower.designer.cs">
+      <DependentUpon>FrmDCPower.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\FrmSetPressure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hardware\FrmSetPressure.designer.cs">
+      <DependentUpon>FrmSetPressure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\FrmTemperature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hardware\FrmTemperature.designer.cs">
+      <DependentUpon>FrmTemperature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\FrmTemptTableCtrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hardware\FrmTemptTableCtrl.designer.cs">
+      <DependentUpon>FrmTemptTableCtrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hardware\HardwareAPI.cs" />
+    <Compile Include="StageCalibrate\FrmNozzleCalibrate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StageCalibrate\FrmNozzleCalibrate.Designer.cs">
+      <DependentUpon>FrmNozzleCalibrate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmCamera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmCamera.designer.cs">
+      <DependentUpon>FrmCamera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAbout.designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StageCalibrate\FrmImmStop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StageCalibrate\FrmImmStop.Designer.cs">
+      <DependentUpon>FrmImmStop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintGuide.Designer.cs">
+      <DependentUpon>FrmPrintGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmPathTrace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmPathTrace.Designer.cs">
+      <DependentUpon>FrmPathTrace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmStatusMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmStatusMonitor.Designer.cs">
+      <DependentUpon>FrmStatusMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep2.Designer.cs">
+      <DependentUpon>FrmPrintStep2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep3.Designer.cs">
+      <DependentUpon>FrmPrintStep3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep4.Designer.cs">
+      <DependentUpon>FrmPrintStep4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StageCalibrate\FrmMotionAdjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StageCalibrate\FrmMotionAdjust.Designer.cs">
+      <DependentUpon>FrmMotionAdjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSteps\FrmPrintStep1.Designer.cs">
+      <DependentUpon>FrmPrintStep1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Win32Bitmap.cs" />
+    <EmbeddedResource Include="Dialogs\FrmDiagnose.resx">
+      <DependentUpon>FrmDiagnose.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmPathPreview.resx">
+      <DependentUpon>FrmPathPreview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmReviewExpLog.resx">
+      <DependentUpon>FrmReviewExpLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmSetting.resx">
+      <DependentUpon>FrmSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FrmShortcut.resx">
+      <DependentUpon>FrmShortcut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPathRun.resx">
+      <DependentUpon>FrmPathRun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsersForm.resx">
+      <DependentUpon>FrmUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hardware\FrmDCPower.resx">
+      <DependentUpon>FrmDCPower.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hardware\FrmRotaryValveCtrl.resx">
+      <DependentUpon>FrmRotaryValveCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hardware\FrmSetPressure.resx">
+      <DependentUpon>FrmSetPressure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hardware\FrmSyringePump.resx">
+      <DependentUpon>FrmSyringePump.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hardware\FrmTemperature.resx">
+      <DependentUpon>FrmTemperature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hardware\FrmTemptTableCtrl.resx">
+      <DependentUpon>FrmTemptTableCtrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StageCalibrate\FrmNozzleCalibrate.resx">
+      <DependentUpon>FrmNozzleCalibrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmCamera.resx">
+      <DependentUpon>FrmCamera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StageCalibrate\FrmImmStop.resx">
+      <DependentUpon>FrmImmStop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintSteps\FrmPrintGuide.resx">
+      <DependentUpon>FrmPrintGuide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmPathTrace.resx">
+      <DependentUpon>FrmPathTrace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmStatusMonitor.resx">
+      <DependentUpon>FrmStatusMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintSteps\FrmPrintStep3.resx">
+      <DependentUpon>FrmPrintStep3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintSteps\FrmPrintStep4.resx">
+      <DependentUpon>FrmPrintStep4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintSteps\FrmPrintStep2.resx">
+      <DependentUpon>FrmPrintStep2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StageCalibrate\FrmMotionAdjust.resx">
+      <DependentUpon>FrmMotionAdjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="PrintSteps\FrmPrintStep1.resx">
+      <DependentUpon>FrmPrintStep1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+    <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\logo2.ico" />
+    <Content Include="smc6x.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\OpenCvSharp4.runtime.win.4.11.0.20250507\build\net48\OpenCvSharp4.runtime.win.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
