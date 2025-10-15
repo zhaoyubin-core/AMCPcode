@@ -20,6 +20,7 @@ namespace AMCP
             InitializeComponent();
             GV.InitObject();
             GV.InitForms(this);
+       
         }
 
         // ****************************************************************** //
