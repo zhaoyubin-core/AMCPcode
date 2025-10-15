@@ -256,7 +256,7 @@
             this.chkAxis2.Font = new System.Drawing.Font("宋体", 12F);
             this.chkAxis2.Location = new System.Drawing.Point(329, 276);
             this.chkAxis2.Name = "chkAxis2";
-            this.chkAxis2.Size = new System.Drawing.Size(74, 36);
+            this.chkAxis2.Size = new System.Drawing.Size(108, 52);
             this.chkAxis2.TabIndex = 289;
             this.chkAxis2.Text = "坐标轴\r\n（Z）";
             this.chkAxis2.UseVisualStyleBackColor = true;
@@ -279,7 +279,7 @@
             this.chkAxis1.Font = new System.Drawing.Font("宋体", 12F);
             this.chkAxis1.Location = new System.Drawing.Point(237, 276);
             this.chkAxis1.Name = "chkAxis1";
-            this.chkAxis1.Size = new System.Drawing.Size(74, 36);
+            this.chkAxis1.Size = new System.Drawing.Size(108, 52);
             this.chkAxis1.TabIndex = 288;
             this.chkAxis1.Text = "坐标轴\r\n（Y）";
             this.chkAxis1.UseVisualStyleBackColor = true;
@@ -302,7 +302,7 @@
             this.chkAxis0.Font = new System.Drawing.Font("宋体", 12F);
             this.chkAxis0.Location = new System.Drawing.Point(147, 276);
             this.chkAxis0.Name = "chkAxis0";
-            this.chkAxis0.Size = new System.Drawing.Size(74, 36);
+            this.chkAxis0.Size = new System.Drawing.Size(108, 52);
             this.chkAxis0.TabIndex = 287;
             this.chkAxis0.Text = "坐标轴\r\n（X）";
             this.chkAxis0.UseVisualStyleBackColor = true;
@@ -397,7 +397,7 @@
             this.lblConnectStatus.Font = new System.Drawing.Font("宋体", 12F);
             this.lblConnectStatus.Location = new System.Drawing.Point(37, 150);
             this.lblConnectStatus.Name = "lblConnectStatus";
-            this.lblConnectStatus.Size = new System.Drawing.Size(159, 16);
+            this.lblConnectStatus.Size = new System.Drawing.Size(238, 24);
             this.lblConnectStatus.TabIndex = 302;
             this.lblConnectStatus.Text = "正在连接，请稍候...";
             // 
@@ -427,7 +427,7 @@
             this.lblhulve.ForeColor = System.Drawing.Color.Silver;
             this.lblhulve.Location = new System.Drawing.Point(482, 219);
             this.lblhulve.Name = "lblhulve";
-            this.lblhulve.Size = new System.Drawing.Size(71, 12);
+            this.lblhulve.Size = new System.Drawing.Size(107, 18);
             this.lblhulve.TabIndex = 305;
             this.lblhulve.Text = "忽略初始化?";
             this.lblhulve.DoubleClick += new System.EventHandler(this.lblhulve_DoubleClick);
@@ -477,7 +477,7 @@
             this.chkAxis3.Font = new System.Drawing.Font("宋体", 12F);
             this.chkAxis3.Location = new System.Drawing.Point(432, 276);
             this.chkAxis3.Name = "chkAxis3";
-            this.chkAxis3.Size = new System.Drawing.Size(90, 36);
+            this.chkAxis3.Size = new System.Drawing.Size(132, 52);
             this.chkAxis3.TabIndex = 306;
             this.chkAxis3.Text = "微动滑台\r\n（Z1）";
             this.chkAxis3.UseVisualStyleBackColor = true;
@@ -488,7 +488,7 @@
             this.chkAxis4.Font = new System.Drawing.Font("宋体", 12F);
             this.chkAxis4.Location = new System.Drawing.Point(539, 276);
             this.chkAxis4.Name = "chkAxis4";
-            this.chkAxis4.Size = new System.Drawing.Size(90, 36);
+            this.chkAxis4.Size = new System.Drawing.Size(132, 52);
             this.chkAxis4.TabIndex = 306;
             this.chkAxis4.Text = "微动滑台\r\n（Z2）";
             this.chkAxis4.UseVisualStyleBackColor = true;
@@ -594,7 +594,7 @@
             this.label1.Font = new System.Drawing.Font("宋体", 12F);
             this.label1.Location = new System.Drawing.Point(154, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(154, 24);
             this.label1.TabIndex = 302;
             this.label1.Text = "三轴运动平台";
             // 
@@ -604,7 +604,7 @@
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
             this.label2.Location = new System.Drawing.Point(158, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.Size = new System.Drawing.Size(130, 24);
             this.label2.TabIndex = 302;
             this.label2.Text = "磁悬浮平台";
             // 
@@ -692,7 +692,7 @@
             this.chkXbotA.Font = new System.Drawing.Font("宋体", 12F);
             this.chkXbotA.Location = new System.Drawing.Point(635, 276);
             this.chkXbotA.Name = "chkXbotA";
-            this.chkXbotA.Size = new System.Drawing.Size(98, 36);
+            this.chkXbotA.Size = new System.Drawing.Size(144, 52);
             this.chkXbotA.TabIndex = 306;
             this.chkXbotA.Text = "平面电机\r\n（Xbot1）";
             this.chkXbotA.UseVisualStyleBackColor = true;
@@ -703,7 +703,7 @@
             this.chkXbotB.Font = new System.Drawing.Font("宋体", 12F);
             this.chkXbotB.Location = new System.Drawing.Point(742, 276);
             this.chkXbotB.Name = "chkXbotB";
-            this.chkXbotB.Size = new System.Drawing.Size(98, 36);
+            this.chkXbotB.Size = new System.Drawing.Size(144, 52);
             this.chkXbotB.TabIndex = 306;
             this.chkXbotB.Text = "平面电机\r\n（Xbot2）";
             this.chkXbotB.UseVisualStyleBackColor = true;
@@ -739,7 +739,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(854, 461);
+            this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.btnDisConnectPMC);
             this.Controls.Add(this.btnConnectPMC);
             this.Controls.Add(this.chkXbotB);
