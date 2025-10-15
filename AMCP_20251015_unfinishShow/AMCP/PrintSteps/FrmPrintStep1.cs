@@ -102,10 +102,7 @@ namespace AMCP
         {
             timer1.Tag = "Connecting";
             timer1.Start();
-            if (GV.PrintingObj.OpenPMCommEthernet(GV.PMC.IpAddress))
-            {
-                MakeConnectedState(ConnectMode.ConnectPMController);
-            }
+            
         }
 
         private void rdoConnect_CheckedChanged(object sender, EventArgs e)
