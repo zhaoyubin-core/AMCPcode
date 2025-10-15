@@ -134,10 +134,12 @@ namespace AMCP
         public static double z2Set;
         public static double vSet = 100;          // 设定度速
 
-
+        //龙门主轴
         public static double X_MIN = 0;     // X轴下限
         public static double Y_MIN = 0;     // Y轴下限
         public static double Z_MIN = 0;     // Z轴下限
+
+        
 
         public static double Z_TOP = 0;     // 提针位置
         public static double Z_BOTTOM = 50; // 下针位置
@@ -307,16 +309,27 @@ namespace AMCP
         public const int X = 3;     // X轴轴号
         public const int Y = 0;     // Y轴轴号
         public const int Z = 6;     // Z轴轴号
-
+     
         public const string IpAddr = "192.168.1.100";
         public static double X_MAX = 580;       // X轴上限
         public static double Y_MAX = 300;       // Y轴上限
         public static double Z_MAX = 100;       // Z轴上限
-        //smallZ
+
+        //平面电机
+        public static double stageXa = 120;//A平台中心
+        public static double stageXb = 460;//B平台中心
+        public static double stageY = 120;//定子平台的中心位置
+        public static double sizeFlyWayS3 = 240;//定子尺寸;240*240*70
+        public static double sizeM3 = 240; //动子M3-13-SD 240*240*10
+        public static double sizePrint = 170;//标准打印文件半径170*170
+
+        //微调平台
         public const int Z1 = 4;
-        public const int Z2 = 5;//axis5
+        public const int Z2 = 5;
         public static double Z1_Max = 10;
         public static double Z2_Max = 10;
+
+        //配置模块串口
         public static string ComADAM = "COM3";          // 亚当模块COM口：转485，含模拟输入（可获取SMC调压阀的气压反馈值、笔式位移传感器电压值）、模拟输出（控制调压阀的气压大小）
         public static string ComNozzleSensor = "COM2";   // 对针位移传感器COM口
         public static string ComWeightMeter = "COM12";   // 称重模块通信COM口：转232/485接口
@@ -1462,8 +1475,8 @@ namespace AMCP
             if (connMode == ConnectMode.ConnectSimulator)
             {
                 //设置仿真时的起点位置为动子的左上角
-                xStart = 35;
-                yStart = 35;
+                xStart = stageXa - sizePrint/2.0;
+                yStart = stageY - sizePrint/2.0;
                 zprint = 30;
             }
             else

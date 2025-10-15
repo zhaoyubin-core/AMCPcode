@@ -176,7 +176,7 @@
             series2.Name = "Series1";
             this.positionChart.Series.Add(series1);
             this.positionChart.Series.Add(series2);
-            this.positionChart.Size = new System.Drawing.Size(611, 335);
+            this.positionChart.Size = new System.Drawing.Size(611, 354);
             this.positionChart.TabIndex = 9;
             this.positionChart.Text = "chart1";
             this.positionChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.positionChart_MouseDown);
@@ -258,8 +258,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.button3);
             this.splitContainer1.Panel2.Controls.Add(this.btnReset);
             this.splitContainer1.Panel2.Controls.Add(this.lblMouseAxisXY);
-            this.splitContainer1.Size = new System.Drawing.Size(784, 388);
-            this.splitContainer1.SplitterDistance = 335;
+            this.splitContainer1.Size = new System.Drawing.Size(784, 411);
+            this.splitContainer1.SplitterDistance = 354;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 141;
             // 
@@ -290,7 +290,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnLoadPath);
             this.splitContainer2.Panel2.Controls.Add(this.btnPauseLoad);
             this.splitContainer2.Panel2.Controls.Add(this.btnPreviewAll);
-            this.splitContainer2.Size = new System.Drawing.Size(784, 335);
+            this.splitContainer2.Size = new System.Drawing.Size(784, 354);
             this.splitContainer2.SplitterDistance = 611;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
@@ -519,10 +519,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 388);
+            this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.KeyPreview = true;
+            this.Location = new System.Drawing.Point(60, 340);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "FrmPathPreview";

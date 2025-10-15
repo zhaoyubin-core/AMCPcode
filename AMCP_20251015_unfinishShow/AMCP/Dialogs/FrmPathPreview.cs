@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Threading;
+using PMCLIB;
 
 namespace AMCP
 {
@@ -19,9 +20,11 @@ namespace AMCP
         public double ky;
 
         public static AxesType axesType = AxesType.XY_Z;//默认显示XY平面
-        public static Series seriXY, seriXY1, seriZ0, seriZ01;//显示路径的序列
+        public static Series seriXY, seriXY1, seriZ0, seriZ01;//显示路径的序列0：A工位，1：显示框架        
         public static Series seriXZ, seriXZ1, seriY0, seriY01;
         public static Series seriYZ, seriX0, seriYZ1, seriX01;
+        public static Series seriXY2, seriZ02;//B工位序列点
+        
         public static Series seriHide;
         bool followCurPosition = false;
         public int refreshInterval = 50;
@@ -39,7 +42,8 @@ namespace AMCP
         /// </summary>
         public static void InitAllSeries()
         {
-            GV.InitSeries(ref seriXY, 0, 1);
+            GV.InitSeries(ref seriXY, 0, 1);//初始化序列
+            GV.InitSeries(ref seriXY2, 0, 1);//初始化B工位序列
             //GV.InitSeries(ref seriXY1, 1, 0);
             //seriXY1.Points.AddXY(0, 0);
 

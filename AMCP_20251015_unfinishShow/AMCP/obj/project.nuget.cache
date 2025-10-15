@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cVtcu3qsAQE=",
+  "dgSpecHash": "/uIkDgHP0J4=",
   "success": true,
-  "projectFilePath": "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj",
+  "projectFilePath": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\AMCP.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lenovo\\.nuget\\packages\\emgu.cv\\4.8.1.5350\\emgu.cv.4.8.1.5350.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\emgu.cv.bitmap\\4.8.1.5350\\emgu.cv.bitmap.4.8.1.5350.nupkg.sha512",
@@ -27,15 +27,5 @@
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Lenovo\\.nuget\\packages\\system.valuetuple\\4.6.1\\system.valuetuple.4.6.1.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "获取包漏洞数据时出错: 无法加载源 https://api.nuget.org/v3/index.json 的服务索引。",
-      "projectPath": "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj",
-      "warningLevel": 1,
-      "filePath": "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

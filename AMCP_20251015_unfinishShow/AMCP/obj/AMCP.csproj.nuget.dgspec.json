@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj": {}
+    "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\AMCP.csproj": {}
   },
   "projects": {
-    "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj": {
+    "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\AMCP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj",
+        "projectUniqueName": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\AMCP.csproj",
         "projectName": "AMCP",
-        "projectPath": "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\AMCP.csproj",
+        "projectPath": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\AMCP.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "D:\\Awork\\Project\\Institude_3\\三所5号机-新\\AMCP_20251014_unfinishdMuiti\\AMCP\\obj\\",
+        "outputPath": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "UsingMicrosoftNETSdk": false,

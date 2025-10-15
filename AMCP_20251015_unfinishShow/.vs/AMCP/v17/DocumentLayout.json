@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|d:\\awork\\project\\institude_3\\onlinecode\\amcpcode\\amcp_20251015_unfinishshow\\amcp\\printsteps\\frmprintstep2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\classes\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\classes\\global.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\view\\frmstatusmonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\view\\frmstatusmonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintguide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintguide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -23,16 +31,16 @@
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\classes\\acsmotioncontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\classes\\acsmotioncontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\dialogs\\frmpathpreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|d:\\awork\\project\\institude_3\\onlinecode\\amcpcode\\amcp_20251015_unfinishshow\\amcp\\printsteps\\frmprintstep2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\classes\\acsmotioncontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\classes\\acsmotioncontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep4.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\view\\frmstatusmonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\view\\frmstatusmonitor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -77,10 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintguide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintguide.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\frmpathrun.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -246,7 +246,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -256,38 +256,14 @@
               "RelativeDocumentMoniker": "AMCP\\Classes\\Global.cs",
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Classes\\Global.cs",
               "RelativeToolTip": "AMCP\\Classes\\Global.cs",
-              "ViewState": "AgIAAK0FAAAAAAAAAAAmwLoFAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAMIEAAAAAAAAAAAiwMEEAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-14T00:53:25.997Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FrmPrintStep2.cs [Design]",
-              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs",
-              "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs [Design]",
-              "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T07:11:00.481Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmPrintStep2.cs",
-              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs",
-              "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs",
-              "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
-              "ViewState": "AgIAAKIHAAAAAAAAAAAqwLYHAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T02:05:04.734Z",
+              "WhenOpened": "2025-07-14T00:53:25.997Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 12,
               "Title": "FrmPrintStep4.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep4.cs",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep4.cs",
@@ -299,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ACSMotionControl.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Classes\\ACSMotionControl.cs",
               "RelativeDocumentMoniker": "AMCP\\Classes\\ACSMotionControl.cs",
@@ -311,53 +287,107 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "FrmPathPreview.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Dialogs\\FrmPathPreview.cs",
               "RelativeDocumentMoniker": "AMCP\\Dialogs\\FrmPathPreview.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251014_unfinishdMuiti\\AMCP\\Dialogs\\FrmPathPreview.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "..\\..\\..\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251014_unfinishdMuiti\\AMCP\\Dialogs\\FrmPathPreview.cs [\u8BBE\u8BA1]",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Dialogs\\FrmPathPreview.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "AMCP\\Dialogs\\FrmPathPreview.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T08:09:42.978Z"
+              "WhenOpened": "2025-10-07T08:09:42.978Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "FrmPathPreview.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Dialogs\\FrmPathPreview.cs",
               "RelativeDocumentMoniker": "AMCP\\Dialogs\\FrmPathPreview.cs",
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Dialogs\\FrmPathPreview.cs",
               "RelativeToolTip": "AMCP\\Dialogs\\FrmPathPreview.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAAGMAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAiwBsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T08:02:34.905Z"
+              "WhenOpened": "2025-10-07T08:02:34.905Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "FrmPrintStep1.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep1.cs",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep1.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251014_unfinishdMuiti\\AMCP\\PrintSteps\\FrmPrintStep1.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "..\\..\\..\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251014_unfinishdMuiti\\AMCP\\PrintSteps\\FrmPrintStep1.cs [\u8BBE\u8BA1]",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep1.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep1.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T07:11:01.483Z"
+              "WhenOpened": "2025-10-14T07:11:01.483Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmStatusMonitor.cs",
+              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\View\\FrmStatusMonitor.cs",
+              "RelativeDocumentMoniker": "AMCP\\View\\FrmStatusMonitor.cs",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\View\\FrmStatusMonitor.cs",
+              "RelativeToolTip": "AMCP\\View\\FrmStatusMonitor.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAswHQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T01:25:19.583Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "FrmPrintGuide.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintGuide.cs",
+              "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintGuide.cs",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintGuide.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintGuide.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T01:45:32.428Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmPrintStep2.cs",
+              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs",
+              "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs",
+              "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
+              "ViewState": "AgIAAI0HAAAAAAAAAAAqwLYHAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T02:05:04.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FrmPrintStep2.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs",
+              "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.cs [\u8BBE\u8BA1]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T07:11:00.481Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "FrmPrintStep1.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep1.cs",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep1.cs",
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep1.cs",
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep1.cs",
-              "ViewState": "AgIAAFgCAAAAAAAAAAAiwGQCAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAFgCAAAAAAAAAAAqwHwCAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T08:32:24.634Z"
+              "WhenOpened": "2025-10-13T08:32:24.634Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "FrmMain.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\FrmMain.cs",
               "RelativeDocumentMoniker": "AMCP\\FrmMain.cs",
@@ -379,7 +409,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "FrmNozzleCalibrate.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\StageCalibrate\\FrmNozzleCalibrate.cs",
               "RelativeDocumentMoniker": "AMCP\\StageCalibrate\\FrmNozzleCalibrate.cs",
@@ -391,7 +421,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "FrmPrintStep4.resx",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep4.resx",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep4.resx",
@@ -402,19 +432,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "FrmStatusMonitor.cs",
-              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\View\\FrmStatusMonitor.cs",
-              "RelativeDocumentMoniker": "AMCP\\View\\FrmStatusMonitor.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\View\\FrmStatusMonitor.cs",
-              "RelativeToolTip": "AMCP\\View\\FrmStatusMonitor.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAkwHQAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T01:25:19.583Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "FrmPrintStep4.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep4.cs",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep4.cs",
@@ -425,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "FrmPrintStep4.Designer.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep4.Designer.cs",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep4.Designer.cs",
@@ -437,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "FrmSetPressure.cs",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\Hardware\\FrmSetPressure.cs",
               "RelativeDocumentMoniker": "AMCP\\Hardware\\FrmSetPressure.cs",
@@ -449,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "FrmPrintStep3.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep3.cs",
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep3.cs",
@@ -460,18 +478,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "FrmPrintGuide.cs [\u8BBE\u8BA1]",
-              "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintGuide.cs",
-              "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintGuide.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251013_unfinisheNozzle\\AMCP\\PrintSteps\\FrmPrintGuide.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "..\\..\\..\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251013_unfinisheNozzle\\AMCP\\PrintSteps\\FrmPrintGuide.cs [\u8BBE\u8BA1]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T01:45:32.428Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "FrmMotionAdjust.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\StageCalibrate\\FrmMotionAdjust.cs",
               "RelativeDocumentMoniker": "AMCP\\StageCalibrate\\FrmMotionAdjust.cs",
@@ -482,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "FrmNozzleCalibrate.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\StageCalibrate\\FrmNozzleCalibrate.cs",
               "RelativeDocumentMoniker": "AMCP\\StageCalibrate\\FrmNozzleCalibrate.cs",
@@ -520,10 +527,11 @@
               "Title": "FrmStatusMonitor.cs [\u8BBE\u8BA1]",
               "DocumentMoniker": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\View\\FrmStatusMonitor.cs",
               "RelativeDocumentMoniker": "AMCP\\View\\FrmStatusMonitor.cs",
-              "ToolTip": "D:\\Awork\\Project\\Institude_3\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251014_unfinishdMuiti\\AMCP\\View\\FrmStatusMonitor.cs [\u8BBE\u8BA1]",
-              "RelativeToolTip": "..\\..\\..\\\u4E09\u62405\u53F7\u673A-\u65B0\\AMCP_20251014_unfinishdMuiti\\AMCP\\View\\FrmStatusMonitor.cs [\u8BBE\u8BA1]",
+              "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\View\\FrmStatusMonitor.cs [\u8BBE\u8BA1]",
+              "RelativeToolTip": "AMCP\\View\\FrmStatusMonitor.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T06:30:37.649Z"
+              "WhenOpened": "2025-07-17T06:30:37.649Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
             },
             {
               "$type": "Document",
@@ -659,7 +667,8 @@
               "RelativeToolTip": "AMCP\\app.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-10-12T11:47:54.745Z"
+              "WhenOpened": "2025-10-12T11:47:54.745Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -671,7 +680,8 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep1.Designer.cs",
               "ViewState": "AgIAAGUDAAAAAAAAAAAYwHUDAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T11:31:40.019Z"
+              "WhenOpened": "2025-08-01T11:31:40.019Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -809,7 +819,8 @@
               "RelativeToolTip": "AMCP\\Dialogs\\FrmPathPreview.Designer.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAAACwCAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T08:42:08.873Z"
+              "WhenOpened": "2025-10-07T08:42:08.873Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -928,7 +939,8 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintGuide.cs",
               "ViewState": "AgIAAI0AAAAAAAAAAAAewJ0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T07:30:06.525Z"
+              "WhenOpened": "2025-07-17T07:30:06.525Z",
+              "EditorCaption": ""
             }
           ]
         },
