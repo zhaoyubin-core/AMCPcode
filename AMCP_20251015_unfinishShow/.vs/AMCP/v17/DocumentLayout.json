@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|d:\\awork\\project\\institude_3\\onlinecode\\amcpcode\\amcp_20251015_unfinishshow\\amcp\\printsteps\\frmprintstep1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|d:\\awork\\project\\institude_3\\onlinecode\\amcpcode\\amcp_20251015_unfinishshow\\amcp\\printsteps\\frmprintstep4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\amcp\\printsteps\\frmprintstep4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{1005D371-500B-42D1-A9B6-7B732B0F6781}|AMCP\\AMCP.csproj|solutionrelative:amcp\\printsteps\\frmprintstep4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -269,8 +269,7 @@
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep2.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T07:11:00.481Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-10-14T07:11:00.481Z"
             },
             {
               "$type": "Document",
@@ -281,8 +280,7 @@
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep4.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep4.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T06:32:09.941Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-07-17T06:32:09.941Z"
             },
             {
               "$type": "Document",
@@ -292,7 +290,7 @@
               "RelativeDocumentMoniker": "AMCP\\PrintSteps\\FrmPrintStep1.cs",
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep1.cs",
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep1.cs",
-              "ViewState": "AgIAAJECAAAAAAAAAAAMwJ4CAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAIkCAAAAAAAAAIAxwJ4CAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-13T08:32:24.634Z",
               "EditorCaption": ""
@@ -306,8 +304,7 @@
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\StageCalibrate\\FrmMotionAdjust.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "AMCP\\StageCalibrate\\FrmMotionAdjust.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-14T06:51:41.675Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-10-14T06:51:41.675Z"
             },
             {
               "$type": "Document",
@@ -319,8 +316,7 @@
               "RelativeToolTip": "AMCP\\StageCalibrate\\FrmMotionAdjust.cs",
               "ViewState": "AgIAAJcHAAAAAAAAAAASwKkHAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-18T12:26:18.152Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-18T12:26:18.152Z"
             },
             {
               "$type": "Document",
@@ -332,8 +328,7 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep4.cs",
               "ViewState": "AgIAAOABAAAAAAAAAAASwPIBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T06:33:35.302Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T06:33:35.302Z"
             },
             {
               "$type": "Document",
@@ -345,8 +340,7 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep1.Designer.cs",
               "ViewState": "AgIAAKsCAAAAAAAAAAASwLoCAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-01T11:31:40.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-01T11:31:40.019Z"
             },
             {
               "$type": "Document",
@@ -357,8 +351,7 @@
               "ToolTip": "D:\\Awork\\Project\\Institude_3\\OnlineCode\\AMCPcode\\AMCP_20251015_unfinishShow\\AMCP\\PrintSteps\\FrmPrintStep3.cs [\u8BBE\u8BA1]",
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep3.cs [\u8BBE\u8BA1]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T11:53:09.669Z",
-              "EditorCaption": " [\u8BBE\u8BA1]"
+              "WhenOpened": "2025-08-02T11:53:09.669Z"
             },
             {
               "$type": "Document",
@@ -598,8 +591,7 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.cs",
               "ViewState": "AgIAADYBAAAAAAAAAAAxwEsBAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T02:05:04.734Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-16T02:05:04.734Z"
             },
             {
               "$type": "Document",
@@ -771,8 +763,7 @@
               "RelativeToolTip": "AMCP\\app.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-10-12T11:47:54.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T11:47:54.745Z"
             },
             {
               "$type": "Document",
@@ -877,8 +868,7 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep2.Designer.cs",
               "ViewState": "AgIAAFAEAAAAAAAAAAAawF8EAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-25T06:15:38.604Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-25T06:15:38.604Z"
             },
             {
               "$type": "Document",
@@ -902,8 +892,7 @@
               "RelativeToolTip": "AMCP\\StageCalibrate\\FrmMotionAdjust.Designer.cs",
               "ViewState": "AgIAAIwEAAAAAAAAAAAnwKEEAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T01:41:22.897Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-21T01:41:22.897Z"
             },
             {
               "$type": "Document",
@@ -927,8 +916,7 @@
               "RelativeToolTip": "AMCP\\PrintSteps\\FrmPrintStep3.cs",
               "ViewState": "AgIAALUBAAAAAAAAAAAhwMYBAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-02T11:43:47.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-02T11:43:47.501Z"
             },
             {
               "$type": "Document",

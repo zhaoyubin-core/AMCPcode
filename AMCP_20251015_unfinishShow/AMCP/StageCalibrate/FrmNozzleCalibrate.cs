@@ -2112,11 +2112,11 @@ namespace AMCP
             {
                 if (tmrOP1_MeasureBase.Enabled)//进入调平流程，点击则停止
                 {
-                    lblNoticeProgress.BackColor = Color.Transparent;
+                    //lblNoticeProgress.BackColor = Color.Transparent;
                     tmrOP1_MeasureBase.Stop();
                     GV.StopImmediately();
                     // btnNozzleCali.Text = "开始校针";
-                    lblNoticeProgress.Text = "";
+                    //lblNoticeProgress.Text = "";
                     return;
                 }
                 else
@@ -2137,7 +2137,7 @@ namespace AMCP
                     Move2ReadyPos(xTarget, yTarget, zTarget, "正在前往共焦点", GV.Z_TOP);
                 }
                 GV.PrintingObj.qWaitMoveEnd();
-
+                GV.PrintingObj.qDisplayInfo("Notice", "已到达打印起始位置", "Orange");
                 ////精细对焦
                 //double originalH = valueDistanceA;//当前测量数值
                 //if (Math.Abs(originalH) > 0.1 && !double.IsInfinity(originalH))
@@ -2146,7 +2146,7 @@ namespace AMCP
                 //    GV.PrintingObj.qMoveAxisTo(GV.Z, zLiDan, 3, GV.PrintingObj.Status.fPosZ);
                 //}
 
-                GV.PrintingObj.qWaitMoveEnd();
+                //GV.PrintingObj.qWaitMoveEnd();
 
             }
             catch (Exception ex)
@@ -2235,8 +2235,7 @@ namespace AMCP
                 switch (tsetType)
                 {
                     case 0://非接触式
-                        {
-                         
+                        {                      
                             if (listBox1.Items.Count > 0 && measurePoints.Length > 0)
                             {
                                 ShowMeasurePoints();//将测量点展示到listbox1
@@ -2250,7 +2249,7 @@ namespace AMCP
                                     + y.ToString("0") + "," + z.ToString("0") + ") 开始整个测试过程吗？\r\n\r\n"
                                     + "如果您之前没有把握测量点位置安全，请点击“取消”按钮。", "请注意", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation))
                                 {
-                                    Move2ReadyPos(x, y, z, "测量中...", GV.Z_TOP);
+                                    Move2ReadyPos(x, y, z, "移动中...", GV.Z_TOP);
                                 }
                                 else
                                 {
@@ -2306,7 +2305,7 @@ namespace AMCP
                             double vXY = 40;
                             GV.PrintingObj.qDisplayInfo("DetectPercent", "0");
                             //GV.PrintingObj.qDisplayInfo("Notice", "正在测量");
-
+                            GV.PrintingObj.qDisplayInfo("Notice", "测量中...", "Green");
                             GV.PrintingObj.listDisplacementLiDanRecord.Clear();//记录数据
                             GV.PrintingObj.listDistanceRecordValue.Clear();
                             for (int i = 0; i < xx.Length; i++)
@@ -2981,7 +2980,9 @@ namespace AMCP
             //同步到motionAdjust
 
         }
-
+        string notice = "";
+        string color = "";
+       
 
         //读取传感器数据定时器
         private void grabTimer_Tick(object sender, EventArgs e)
@@ -2999,6 +3000,9 @@ namespace AMCP
                 {
                     lblLidanValueA.Text ="超出量程";//显示精度0.1微
                 }
+                GV.PrintingObj.GetNoticeInfo(out notice, out color);
+                lblNoticeProgress.Text = "当前状态：" + notice;
+                lblNoticeProgress.BackColor = ColorTranslator.FromHtml(color);
             }
             catch (Exception ex)
             {
@@ -3116,11 +3120,7 @@ namespace AMCP
         {
             try
             {
-                string notice = "";
-                string color = "";
-                GV.PrintingObj.GetNoticeInfo( out notice,out color);
-                lblNoticeProgress.Text = "当前状态：" + notice;
-                lblNoticeProgress.BackColor = ColorTranslator.FromHtml(color);
+          
 
                 //获取点，测量组调节一次
                 //GV.PrintingObj.GetBaseDetectPercent(out percent, out strNotice);
@@ -3251,9 +3251,9 @@ namespace AMCP
             //long tRemain = GV.printingObj.GetLeftTimeZ();
             //int percent = (int)(100.0 * tUsed / (tUsed + tRemain));
 
-            string notice;
-            string color;
-            GV.PrintingObj.GetNoticeInfo(out notice, out color);
+            //string notice;
+            //string color;
+            //GV.PrintingObj.GetNoticeInfo(out notice, out color);
             //if (notice != "NozzleReady")
             //{
             //    lblNoticeCamOP2.Text = notice;
@@ -3264,8 +3264,8 @@ namespace AMCP
             {
                 //lblNoticeCamOP2.Text = $"测量结果: {distanceBase:F2} um, 需要调整: {distanceBase - targetDistance:F2} um";
                 //lblNoticeCamOP2.BackColor = Color.Green;
-                lblNoticeProgress.Text = "当前状态：" + notice;
-                lblNoticeProgress.BackColor = ColorTranslator.FromHtml(color);
+                //lblNoticeProgress.Text = "当前状态：" + notice;
+                //lblNoticeProgress.BackColor = ColorTranslator.FromHtml(color);
 
                 double iTargetZ;
                 double iNowZ = GV.PrintingObj.GetFPosition(GV.Z);
