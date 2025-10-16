@@ -2703,7 +2703,7 @@
             this.label81.Name = "label81";
             this.label81.Size = new System.Drawing.Size(28, 14);
             this.label81.TabIndex = 341;
-            this.label81.Text = "dX:";
+            this.label81.Text = "rX:";
             this.label81.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label75

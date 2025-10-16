@@ -1100,36 +1100,18 @@ namespace AMCP
                     if (value == 0 && !IsPrinting)
                     {
                         GV.Isextrude = false;
-                        // Ch.SetOutput(1, 11, 0);//喷头1关闭
-                        // Ch.SetOutput(1, 10, 0);//螺杆阀关闭
-                        //xlm
-                        //Ch.SetOutput(0, 9, 0);
-                        //Ch.SetOutput(0, 10, 0);
-                        //食品陶泥
                         Ch.SetOutput(0, 8, 1);
                         GV.frmRotaryValveCtrl.SendZeroSpeed();
                     }
                     else if (value == 0 && IsPrinting)
                     {
                         GV.Isextrude = true;
-                        // Ch.SetOutput(1, 11, 1);//喷头1启动
-                        //Ch.SetOutput(1, 10, 0);//螺杆阀关闭
-                        //xlm
-                        //Ch.SetOutput(0, 9, 0);
-                        //Ch.SetOutput(0, 10, 1);
-                        //食品陶泥
                         Ch.SetOutput(0, 8, 0);
                         GV.frmRotaryValveCtrl.SendZeroSpeed();
                     }
                     else if (value == 1)
                     {
                         GV.Isextrude = true;
-                        // Ch.SetOutput(1, 11, 1);//喷头1启动
-                        // Ch.SetOutput(1, 10, 1);//螺杆阀启动
-                        //xlm
-                        //Ch.SetOutput(0, 9, 1);
-                        //Ch.SetOutput(0, 10, 1);
-                        //食品
                         Ch.SetOutput(0, 8, 1);
                         GV.frmRotaryValveCtrl.MotorRun(value);
                     }
@@ -1141,15 +1123,6 @@ namespace AMCP
                 default:
                     break;
             }
-            //螺杆阀电源
-            //if (value == 1)
-            //{
-            //    GV.frmDCPower.OpenPower();
-            //}
-            //else
-            //{
-            //    GV.frmDCPower.ClosePower();
-            //}
         }
 
         public int GetExtrudePort(ExtrudePortType portType)
@@ -1167,12 +1140,6 @@ namespace AMCP
             switch (port)
             {
                 case 0: // 喷头1出丝
-                    //value = Ch.GetOutput(1, 11);
-                    //xlm
-                    //value = Ch.GetOutput(0, 10);
-                    //食品
-                    //value = Ch.GetOutput(0, 10);
-                    //dlm
                     value = Ch.GetOutput(1, 1);
                     break;
                 case 1: // 喷头2出丝
@@ -1576,7 +1543,7 @@ namespace AMCP
             DataObj.InsertCmdData(cds);
         }
 
-        public void qSegmentLine(int[] Axes, double[] StartPoint, double[] FinalPoint, double Velocity, double EndVelocity, double layer = -1, string strGcode = "")
+        public void qSegmentLine(int[] Axes, double[] StartPoint, double[] FinalPoint, double Velocity, double EndVelocity, double layer = -1, string strGcode = "", int index = 0, int printPos = 0)
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
             cds.CmdName = DataManagement.OptType.SegmentLine;
@@ -1594,12 +1561,15 @@ namespace AMCP
             cds.Para4 = EndVelocity.ToString();
             cds.Para9 = layer.ToString();
             cds.Para10 = strGcode;
+            cds.Para11 = index.ToString();
+            cds.Para12 = printPos.ToString();
+
             double distance = Math.Sqrt(Math.Pow(StartPoint[0] - FinalPoint[0], 2) + Math.Pow(StartPoint[1] - FinalPoint[1], 2));
             cds.EstimateTime = distance / Velocity;
             DataObj.InsertCmdData(cds);
         }
 
-        public void qSegmentArc1(int[] Axes, double[] Center, double[] FinalPoint, int Rotation, double Velocity, double EndVelocity, double layer = -1, string strGcode = "")
+        public void qSegmentArc1(int[] Axes, double[] Center, double[] FinalPoint, int Rotation, double Velocity, double EndVelocity, double layer = -1, string strGcode = "", int index = 0, int printPos = 0)
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
             cds.CmdName = DataManagement.OptType.SegmentArc1;
@@ -1620,8 +1590,11 @@ namespace AMCP
             cds.Para4 = Rotation.ToString();
             cds.Para5 = Velocity.ToString();
             cds.Para6 = EndVelocity.ToString();
+
             cds.Para9 = layer.ToString();
             cds.Para10 = strGcode;
+            cds.Para11 = index.ToString();
+            cds.Para12 = printPos.ToString();
             cds.EstimateTime = 0;
             DataObj.InsertCmdData(cds);
         }
@@ -1658,7 +1631,7 @@ namespace AMCP
             DataObj.InsertCmdData(cds);
         }
 
-        public void qSegmentArc2(int[] Axes, double[] Center, double[] endPoint, double Angle, double Velocity, double EndVelocity, double layer = -1, string strGcode = "")
+        public void qSegmentArc2(int[] Axes, double[] Center, double[] endPoint, double Angle, double Velocity, double EndVelocity, double layer = -1, string strGcode = "", int index = 0, int printPos = 0)
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
             cds.CmdName = DataManagement.OptType.SegmentArc2;
@@ -1680,6 +1653,9 @@ namespace AMCP
             cds.Para5 = EndVelocity.ToString();
             cds.Para9 = layer.ToString();
             cds.Para10 = strGcode;
+            cds.Para11 = index.ToString();
+            cds.Para12 = printPos.ToString();
+
             if (Axes.Length == 3)
             {
                 radius = Math.Sqrt(Math.Pow(endPoint[0] - Center[0], 2) + Math.Pow(endPoint[1] - Center[1], 2));
@@ -1801,7 +1777,7 @@ namespace AMCP
         /// <param name="speed">移动速度</param>
         /// <param name="xStart">开始位置x</param>
         /// <param name="yStart">开始位置y</param>
-        public void qMoveXYTo(double xPos, double yPos, double speed, double xStart, double yStart, double layer = -1, string strGcode = "")
+        public void qMoveXYTo(double xPos, double yPos, double speed, double xStart, double yStart, double layer = -1, string strGcode = "", int index = 0, int printPos = 0)
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
             cds.CmdName = DataManagement.OptType.MoveXYTo;
@@ -1810,6 +1786,8 @@ namespace AMCP
             cds.Para3 = speed.ToString();
             cds.Para9 = layer.ToString();
             cds.Para10 = strGcode;
+            cds.Para11 = index.ToString();
+            cds.Para12 = printPos.ToString();
 
             double s = Math.Sqrt(Math.Pow(xPos - xStart, 2) + Math.Pow(yPos - yStart, 2));
             cds.EstimateTime = s / speed;
@@ -1858,15 +1836,19 @@ namespace AMCP
             DataObj.InsertCmdData(cds);
         }
 
-        public void qMoveAxisTo(int axis, double pos, double speed, double posStart, double layer = -1, string strGcode = "")
+        public void qMoveAxisTo(int axis, double pos, double speed, double posStart, double layer = -1, string strGcode = "", int index = 0, int printPos = 0)
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
             cds.CmdName = DataManagement.OptType.MoveAxisTo;
             cds.Para1 = axis.ToString();
             cds.Para2 = pos.ToString();
             cds.Para3 = speed.ToString();
+
             cds.Para9 = layer.ToString();
             cds.Para10 = strGcode;
+            cds.Para11 = index.ToString();
+            cds.Para12 = printPos.ToString();
+
             cds.EstimateTime = Math.Abs(posStart - pos) / speed;
             cds.EstimateTime += 0.2; // 加减速多消耗的时间
             DataObj.InsertCmdData(cds);
@@ -1883,15 +1865,19 @@ namespace AMCP
             DataObj.InsertCmdData(cds);
         }
 
-        public void qMoveAxisRelative(int axis, double distance, double speed, double layer = -1, string strGcode = "")
+        public void qMoveAxisRelative(int axis, double distance, double speed, double layer = -1, string strGcode = "", int index = 0, int printPos = 0)
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
             cds.CmdName = DataManagement.OptType.MoveAxisRelative;
             cds.Para1 = axis.ToString();
             cds.Para2 = distance.ToString();
             cds.Para3 = speed.ToString();
+
             cds.Para9 = layer.ToString();
             cds.Para10 = strGcode;
+            cds.Para11 = index.ToString();
+            cds.Para12 = printPos.ToString();
+
             cds.EstimateTime = Math.Abs(distance) / speed;
             cds.EstimateTime += 0.2; // 加减速多消耗的时间
             DataObj.InsertCmdData(cds);
@@ -3304,19 +3290,19 @@ namespace AMCP
         public void qMoveXbotRelative(int xbotID, int axis, double distance, double speed, double accleration, double layer = -1, string strGcode = "")
         {
             DataManagement.CmdDataStruct cds = new DataManagement.CmdDataStruct();
-            cds.CmdName = DataManagement.OptType.MoveAxisRelative;
+            //cds.CmdName = DataManagement.OptType.MoveAxisRelative;
 
-            cds.Para1 = xbotID.ToString();
-            cds.Para2 = axis.ToString();
-            cds.Para3 = distance.ToString();
-            cds.Para4 = speed.ToString();
-            cds.Para5 = accleration.ToString();
+            //cds.Para1 = xbotID.ToString();
+            //cds.Para2 = axis.ToString();
+            //cds.Para3 = distance.ToString();
+            //cds.Para4 = speed.ToString();
+            //cds.Para5 = accleration.ToString();
 
-            cds.Para9 = layer.ToString();
-            cds.Para10 = strGcode;
-            cds.EstimateTime = Math.Abs(distance) / speed;
-            cds.EstimateTime += 0.2; // 加减速多消耗的时间
-            DataObj.InsertCmdData(cds);
+            //cds.Para9 = layer.ToString();
+            //cds.Para10 = strGcode;
+            //cds.EstimateTime = Math.Abs(distance) / speed;
+            //cds.EstimateTime += 0.2; // 加减速多消耗的时间
+            //DataObj.InsertCmdData(cds);
         }
         //单轴绝对移动移动
         public void qMovexBotTo(int xbotID, int axis, double target, double speed, double accleration, double layer = -1, string strGcode = "")

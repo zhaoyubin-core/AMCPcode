@@ -33,6 +33,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 0D);
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnClearChart = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.positionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -47,6 +48,10 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnZoomIn = new System.Windows.Forms.Button();
             this.lblNotice = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.btnNextOne = new System.Windows.Forms.Button();
+            this.btnPreviousOne = new System.Windows.Forms.Button();
             this.btnConfirmPrinting = new System.Windows.Forms.Button();
             this.nmudSelectLayer = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,6 +80,7 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmudSelectLayer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,14 +175,18 @@
             this.positionChart.Name = "positionChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Name = "Series0";
+            series1.Name = "SeriesA";
             series1.Points.Add(dataPoint1);
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Name = "Series1";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Name = "SeriesB";
             this.positionChart.Series.Add(series1);
             this.positionChart.Series.Add(series2);
-            this.positionChart.Size = new System.Drawing.Size(611, 354);
+            this.positionChart.Series.Add(series3);
+            this.positionChart.Size = new System.Drawing.Size(625, 412);
             this.positionChart.TabIndex = 9;
             this.positionChart.Text = "chart1";
             this.positionChart.MouseDown += new System.Windows.Forms.MouseEventHandler(this.positionChart_MouseDown);
@@ -258,8 +268,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.button3);
             this.splitContainer1.Panel2.Controls.Add(this.btnReset);
             this.splitContainer1.Panel2.Controls.Add(this.lblMouseAxisXY);
-            this.splitContainer1.Size = new System.Drawing.Size(784, 411);
-            this.splitContainer1.SplitterDistance = 354;
+            this.splitContainer1.Size = new System.Drawing.Size(793, 479);
+            this.splitContainer1.SplitterDistance = 412;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 141;
             // 
@@ -281,6 +291,10 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer2.Panel2.Controls.Add(this.label2);
+            this.splitContainer2.Panel2.Controls.Add(this.numericUpDown1);
+            this.splitContainer2.Panel2.Controls.Add(this.btnNextOne);
+            this.splitContainer2.Panel2.Controls.Add(this.btnPreviousOne);
             this.splitContainer2.Panel2.Controls.Add(this.btnConfirmPrinting);
             this.splitContainer2.Panel2.Controls.Add(this.nmudSelectLayer);
             this.splitContainer2.Panel2.Controls.Add(this.label1);
@@ -290,8 +304,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.btnLoadPath);
             this.splitContainer2.Panel2.Controls.Add(this.btnPauseLoad);
             this.splitContainer2.Panel2.Controls.Add(this.btnPreviewAll);
-            this.splitContainer2.Size = new System.Drawing.Size(784, 354);
-            this.splitContainer2.SplitterDistance = 611;
+            this.splitContainer2.Size = new System.Drawing.Size(793, 412);
+            this.splitContainer2.SplitterDistance = 625;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -335,6 +349,53 @@
             this.lblNotice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblNotice.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(14, 317);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 16);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "序号:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.White;
+            this.numericUpDown1.Location = new System.Drawing.Point(68, 311);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(47, 26);
+            this.numericUpDown1.TabIndex = 10;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // btnNextOne
+            // 
+            this.btnNextOne.BackColor = System.Drawing.Color.White;
+            this.btnNextOne.Location = new System.Drawing.Point(20, 375);
+            this.btnNextOne.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNextOne.Name = "btnNextOne";
+            this.btnNextOne.Size = new System.Drawing.Size(100, 31);
+            this.btnNextOne.TabIndex = 9;
+            this.btnNextOne.Text = "下一个";
+            this.btnNextOne.UseVisualStyleBackColor = false;
+            // 
+            // btnPreviousOne
+            // 
+            this.btnPreviousOne.BackColor = System.Drawing.Color.White;
+            this.btnPreviousOne.Location = new System.Drawing.Point(20, 340);
+            this.btnPreviousOne.Margin = new System.Windows.Forms.Padding(4);
+            this.btnPreviousOne.Name = "btnPreviousOne";
+            this.btnPreviousOne.Size = new System.Drawing.Size(100, 31);
+            this.btnPreviousOne.TabIndex = 8;
+            this.btnPreviousOne.Text = "上一个";
+            this.btnPreviousOne.UseVisualStyleBackColor = false;
+            // 
             // btnConfirmPrinting
             // 
             this.btnConfirmPrinting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -351,7 +412,7 @@
             // nmudSelectLayer
             // 
             this.nmudSelectLayer.BackColor = System.Drawing.Color.White;
-            this.nmudSelectLayer.Location = new System.Drawing.Point(25, 227);
+            this.nmudSelectLayer.Location = new System.Drawing.Point(19, 191);
             this.nmudSelectLayer.Margin = new System.Windows.Forms.Padding(4);
             this.nmudSelectLayer.Name = "nmudSelectLayer";
             this.nmudSelectLayer.Size = new System.Drawing.Size(95, 26);
@@ -367,7 +428,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(22, 206);
+            this.label1.Location = new System.Drawing.Point(19, 170);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 16);
@@ -377,7 +438,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(22, 362);
+            this.button2.Location = new System.Drawing.Point(22, 135);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 31);
@@ -390,7 +451,7 @@
             // 
             this.button4.BackColor = System.Drawing.Color.White;
             this.button4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button4.Location = new System.Drawing.Point(22, 274);
+            this.button4.Location = new System.Drawing.Point(19, 272);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(100, 31);
@@ -402,7 +463,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(22, 323);
+            this.button1.Location = new System.Drawing.Point(21, 96);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 31);
@@ -414,7 +475,7 @@
             // btnLoadPath
             // 
             this.btnLoadPath.BackColor = System.Drawing.Color.White;
-            this.btnLoadPath.Location = new System.Drawing.Point(20, 35);
+            this.btnLoadPath.Location = new System.Drawing.Point(20, 13);
             this.btnLoadPath.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadPath.Name = "btnLoadPath";
             this.btnLoadPath.Size = new System.Drawing.Size(100, 33);
@@ -426,7 +487,7 @@
             // btnPauseLoad
             // 
             this.btnPauseLoad.BackColor = System.Drawing.Color.White;
-            this.btnPauseLoad.Location = new System.Drawing.Point(20, 90);
+            this.btnPauseLoad.Location = new System.Drawing.Point(21, 55);
             this.btnPauseLoad.Margin = new System.Windows.Forms.Padding(4);
             this.btnPauseLoad.Name = "btnPauseLoad";
             this.btnPauseLoad.Size = new System.Drawing.Size(100, 33);
@@ -438,7 +499,7 @@
             // btnPreviewAll
             // 
             this.btnPreviewAll.BackColor = System.Drawing.Color.White;
-            this.btnPreviewAll.Location = new System.Drawing.Point(20, 158);
+            this.btnPreviewAll.Location = new System.Drawing.Point(15, 231);
             this.btnPreviewAll.Margin = new System.Windows.Forms.Padding(4);
             this.btnPreviewAll.Name = "btnPreviewAll";
             this.btnPreviewAll.Size = new System.Drawing.Size(100, 33);
@@ -515,11 +576,15 @@
             this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // FrmPathPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 411);
+            this.ClientSize = new System.Drawing.Size(793, 479);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("宋体", 12F);
             this.KeyPreview = true;
@@ -546,6 +611,7 @@
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmudSelectLayer)).EndInit();
             this.ResumeLayout(false);
 
@@ -585,6 +651,9 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button6;
-
+        private System.Windows.Forms.Button btnNextOne;
+        private System.Windows.Forms.Button btnPreviousOne;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label2;
     }
 }

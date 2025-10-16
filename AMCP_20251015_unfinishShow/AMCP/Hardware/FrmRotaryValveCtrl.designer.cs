@@ -62,6 +62,7 @@
             this.ConnOn = new System.Windows.Forms.PictureBox();
             this.ConnOff = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTimeRotation = new System.Windows.Forms.Label();
             this.numTimeDelay = new System.Windows.Forms.NumericUpDown();
             this.txtPV_real = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -78,7 +79,6 @@
             this.dGVTimeRotation = new System.Windows.Forms.DataGridView();
             this.Time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rotation = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTimeRotation = new System.Windows.Forms.Label();
             this.timerLoadRotation = new System.Windows.Forms.Timer(this.components);
             this.btnOpenCOM1 = new System.Windows.Forms.Button();
             this.btnDeleteRow = new System.Windows.Forms.Button();
@@ -101,7 +101,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnWriteSVB = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,6 +110,9 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnOpenCOM2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nmudSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ConnOff)).BeginInit();
@@ -167,7 +170,7 @@
             this.cmbComPort1.FormattingEnabled = true;
             this.cmbComPort1.Items.AddRange(new object[] {
             "COM6"});
-            this.cmbComPort1.Location = new System.Drawing.Point(126, 39);
+            this.cmbComPort1.Location = new System.Drawing.Point(126, 35);
             this.cmbComPort1.Name = "cmbComPort1";
             this.cmbComPort1.Size = new System.Drawing.Size(98, 24);
             this.cmbComPort1.TabIndex = 81;
@@ -408,6 +411,18 @@
             this.panel1.Size = new System.Drawing.Size(357, 193);
             this.panel1.TabIndex = 291;
             // 
+            // lblTimeRotation
+            // 
+            this.lblTimeRotation.AutoSize = true;
+            this.lblTimeRotation.Font = new System.Drawing.Font("宋体", 12F);
+            this.lblTimeRotation.ForeColor = System.Drawing.Color.Black;
+            this.lblTimeRotation.Location = new System.Drawing.Point(3, 167);
+            this.lblTimeRotation.Name = "lblTimeRotation";
+            this.lblTimeRotation.Size = new System.Drawing.Size(31, 16);
+            this.lblTimeRotation.TabIndex = 295;
+            this.lblTimeRotation.Text = "   ";
+            this.lblTimeRotation.Click += new System.EventHandler(this.lblTimeRotation_Click);
+            // 
             // numTimeDelay
             // 
             this.numTimeDelay.Location = new System.Drawing.Point(10, 76);
@@ -530,7 +545,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 12F);
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(24, 42);
+            this.label7.Location = new System.Drawing.Point(24, 38);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 16);
             this.label7.TabIndex = 292;
@@ -589,18 +604,6 @@
             this.Rotation.HeaderText = "转速";
             this.Rotation.Name = "Rotation";
             // 
-            // lblTimeRotation
-            // 
-            this.lblTimeRotation.AutoSize = true;
-            this.lblTimeRotation.Font = new System.Drawing.Font("宋体", 12F);
-            this.lblTimeRotation.ForeColor = System.Drawing.Color.Black;
-            this.lblTimeRotation.Location = new System.Drawing.Point(3, 167);
-            this.lblTimeRotation.Name = "lblTimeRotation";
-            this.lblTimeRotation.Size = new System.Drawing.Size(31, 16);
-            this.lblTimeRotation.TabIndex = 295;
-            this.lblTimeRotation.Text = "   ";
-            this.lblTimeRotation.Click += new System.EventHandler(this.lblTimeRotation_Click);
-            // 
             // timerLoadRotation
             // 
             this.timerLoadRotation.Tick += new System.EventHandler(this.timerLoadRotation_Tick);
@@ -610,7 +613,7 @@
             this.btnOpenCOM1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOpenCOM1.Font = new System.Drawing.Font("宋体", 12F);
             this.btnOpenCOM1.ForeColor = System.Drawing.Color.Black;
-            this.btnOpenCOM1.Location = new System.Drawing.Point(253, 32);
+            this.btnOpenCOM1.Location = new System.Drawing.Point(275, 28);
             this.btnOpenCOM1.Name = "btnOpenCOM1";
             this.btnOpenCOM1.Size = new System.Drawing.Size(98, 37);
             this.btnOpenCOM1.TabIndex = 76;
@@ -687,7 +690,7 @@
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.btnWriteSVB);
             this.panel2.Enabled = false;
             this.panel2.Location = new System.Drawing.Point(397, 97);
             this.panel2.Name = "panel2";
@@ -864,18 +867,18 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.btnSetZero_Click);
             // 
-            // button4
+            // btnWriteSVB
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button4.Font = new System.Drawing.Font("宋体", 12F);
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(249, 23);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(98, 33);
-            this.button4.TabIndex = 121;
-            this.button4.Text = "启动";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.btnWriteSV_Click);
+            this.btnWriteSVB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnWriteSVB.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnWriteSVB.ForeColor = System.Drawing.Color.Black;
+            this.btnWriteSVB.Location = new System.Drawing.Point(249, 23);
+            this.btnWriteSVB.Name = "btnWriteSVB";
+            this.btnWriteSVB.Size = new System.Drawing.Size(98, 33);
+            this.btnWriteSVB.TabIndex = 121;
+            this.btnWriteSVB.Text = "启动";
+            this.btnWriteSVB.UseVisualStyleBackColor = false;
+            this.btnWriteSVB.Click += new System.EventHandler(this.btnWriteSV_Click);
             // 
             // label18
             // 
@@ -976,12 +979,50 @@
             this.button8.Text = "添加";
             this.button8.UseVisualStyleBackColor = false;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("宋体", 12F);
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(393, 39);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(87, 16);
+            this.label19.TabIndex = 302;
+            this.label19.Text = "选择串口：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "COM6"});
+            this.comboBox1.Location = new System.Drawing.Point(495, 34);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(98, 24);
+            this.comboBox1.TabIndex = 301;
+            this.comboBox1.Text = "COM8";
+            // 
+            // btnOpenCOM2
+            // 
+            this.btnOpenCOM2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOpenCOM2.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnOpenCOM2.ForeColor = System.Drawing.Color.Black;
+            this.btnOpenCOM2.Location = new System.Drawing.Point(647, 28);
+            this.btnOpenCOM2.Name = "btnOpenCOM2";
+            this.btnOpenCOM2.Size = new System.Drawing.Size(98, 37);
+            this.btnOpenCOM2.TabIndex = 300;
+            this.btnOpenCOM2.Text = "打开串口";
+            this.btnOpenCOM2.UseVisualStyleBackColor = false;
+            // 
             // FrmRotaryValveCtrl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(821, 510);
+            this.ClientSize = new System.Drawing.Size(784, 510);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnOpenCOM2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
@@ -1107,7 +1148,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnWriteSVB;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -1116,6 +1157,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnOpenCOM2;
     }
 }
 

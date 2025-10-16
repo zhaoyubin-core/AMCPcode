@@ -1952,7 +1952,8 @@ namespace AMCP
         {
             SelectRadio1();
         }
-        //临时用
+
+        //复位动子
         private void button1_Click(object sender, EventArgs e)
         {
             //GV.PrintingObj.MoveXbotXYAbsolute(GV.PMC.arrXBotIds[0], 360, 120, 20, 0, 20 * 100);
@@ -1961,9 +1962,9 @@ namespace AMCP
             GV.PrintingObj.MoveXbotSixDof(GV.PMC.arrXBotIds[0], 360, 120, 1, 0, 0, 0);
         }
 
-        private void txtZbBottom_TextChanged(object sender, EventArgs e)
+        private void btnResetxBotB_Click(object sender, EventArgs e)
         {
-
+            //GV.PrintingObj.MoveXbotSixDof(GV.PMC.arrXBotIds[1], 360, 120, 1, 0, 0, 0);
         }
 
 

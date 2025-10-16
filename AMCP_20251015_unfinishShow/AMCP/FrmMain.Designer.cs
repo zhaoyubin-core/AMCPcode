@@ -122,7 +122,7 @@
             // toolStripStatusLabelPMC
             // 
             this.toolStripStatusLabelPMC.Name = "toolStripStatusLabelPMC";
-            this.toolStripStatusLabelPMC.Size = new System.Drawing.Size(164, 23);
+            this.toolStripStatusLabelPMC.Size = new System.Drawing.Size(111, 25);
             this.toolStripStatusLabelPMC.Text = "PMC_INACTIVATE";
             // 
             // tsslControllerConnected
@@ -135,7 +135,7 @@
             this.tsslControllerConnected.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tsslControllerConnected.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsslControllerConnected.Name = "tsslControllerConnected";
-            this.tsslControllerConnected.Size = new System.Drawing.Size(140, 23);
+            this.tsslControllerConnected.Size = new System.Drawing.Size(140, 25);
             this.tsslControllerConnected.Text = " 控制器未连接";
             // 
             // toolStripStatusLabel2
@@ -143,7 +143,7 @@
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripStatusLabel2.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(136, 27);
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(93, 28);
             this.toolStripStatusLabel2.Text = "尚未初始化";
             // 
             // toolStripStatusLabel3
@@ -151,7 +151,7 @@
             this.toolStripStatusLabel3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripStatusLabel3.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(136, 23);
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(91, 25);
             this.toolStripStatusLabel3.Text = "点胶机未连接";
             // 
             // toolStripStatusLabel4
@@ -159,7 +159,7 @@
             this.toolStripStatusLabel4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripStatusLabel4.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(136, 23);
+            this.toolStripStatusLabel4.Size = new System.Drawing.Size(91, 25);
             this.toolStripStatusLabel4.Text = "螺杆阀未连接";
             // 
             // toolStripStatusLabel5
@@ -167,7 +167,7 @@
             this.toolStripStatusLabel5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripStatusLabel5.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(157, 23);
+            this.toolStripStatusLabel5.Size = new System.Drawing.Size(105, 25);
             this.toolStripStatusLabel5.Text = "激光测距未连接";
             // 
             // toolStripStatusLabel6
@@ -175,7 +175,7 @@
             this.toolStripStatusLabel6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.toolStripStatusLabel6.ForeColor = System.Drawing.Color.Red;
             this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(157, 23);
+            this.toolStripStatusLabel6.Size = new System.Drawing.Size(105, 25);
             this.toolStripStatusLabel6.Text = "称重模块未连接";
             // 
             // tsslPrinting
@@ -184,7 +184,7 @@
             this.tsslPrinting.ForeColor = System.Drawing.Color.Black;
             this.tsslPrinting.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.tsslPrinting.Name = "tsslPrinting";
-            this.tsslPrinting.Size = new System.Drawing.Size(127, 23);
+            this.tsslPrinting.Size = new System.Drawing.Size(84, 25);
             this.tsslPrinting.Text = "正在打印...";
             this.tsslPrinting.Visible = false;
             // 
@@ -193,7 +193,7 @@
             this.tsslPrintingPercent.AutoSize = false;
             this.tsslPrintingPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tsslPrintingPercent.Name = "tsslPrintingPercent";
-            this.tsslPrintingPercent.Size = new System.Drawing.Size(450, 22);
+            this.tsslPrintingPercent.Size = new System.Drawing.Size(450, 24);
             this.tsslPrintingPercent.Value = 21;
             this.tsslPrintingPercent.Visible = false;
             // 
@@ -253,58 +253,58 @@
             this.tsmExit});
             this.tsmPrintingOperation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tsmPrintingOperation.Name = "tsmPrintingOperation";
-            this.tsmPrintingOperation.Size = new System.Drawing.Size(156, 33);
+            this.tsmPrintingOperation.Size = new System.Drawing.Size(105, 24);
             this.tsmPrintingOperation.Text = "打印操作(&F)";
             // 
             // tsmSysInitialize
             // 
             this.tsmSysInitialize.Name = "tsmSysInitialize";
-            this.tsmSysInitialize.Size = new System.Drawing.Size(270, 38);
+            this.tsmSysInitialize.Size = new System.Drawing.Size(174, 24);
             this.tsmSysInitialize.Text = "平台初始化";
             this.tsmSysInitialize.Click += new System.EventHandler(this.tsmSysInitialize_Click);
             // 
             // tsmLoadPathFile
             // 
             this.tsmLoadPathFile.Name = "tsmLoadPathFile";
-            this.tsmLoadPathFile.Size = new System.Drawing.Size(270, 38);
+            this.tsmLoadPathFile.Size = new System.Drawing.Size(174, 24);
             this.tsmLoadPathFile.Text = "加载路径文件";
             this.tsmLoadPathFile.Click += new System.EventHandler(this.tsmLoadPathFile_Click);
             // 
             // tsmLoadTechParaFile
             // 
             this.tsmLoadTechParaFile.Name = "tsmLoadTechParaFile";
-            this.tsmLoadTechParaFile.Size = new System.Drawing.Size(270, 38);
+            this.tsmLoadTechParaFile.Size = new System.Drawing.Size(174, 24);
             this.tsmLoadTechParaFile.Text = "加载工艺文件";
             this.tsmLoadTechParaFile.Click += new System.EventHandler(this.tsmLoadTechParaFile_Click);
             // 
             // tsmPrintPreview
             // 
             this.tsmPrintPreview.Name = "tsmPrintPreview";
-            this.tsmPrintPreview.Size = new System.Drawing.Size(270, 38);
+            this.tsmPrintPreview.Size = new System.Drawing.Size(174, 24);
             this.tsmPrintPreview.Text = "打印预览";
             this.tsmPrintPreview.Click += new System.EventHandler(this.tsmPrintPreview_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(171, 6);
             // 
             // tsmSysSetting
             // 
             this.tsmSysSetting.Name = "tsmSysSetting";
-            this.tsmSysSetting.Size = new System.Drawing.Size(270, 38);
+            this.tsmSysSetting.Size = new System.Drawing.Size(174, 24);
             this.tsmSysSetting.Text = "系统设置";
             this.tsmSysSetting.Click += new System.EventHandler(this.tsmSysSetting_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(171, 6);
             // 
             // tsmExit
             // 
             this.tsmExit.Name = "tsmExit";
-            this.tsmExit.Size = new System.Drawing.Size(270, 38);
+            this.tsmExit.Size = new System.Drawing.Size(174, 24);
             this.tsmExit.Text = "退出平台";
             this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
@@ -323,69 +323,69 @@
             this.tsmStageCalibrate.Enabled = false;
             this.tsmStageCalibrate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tsmStageCalibrate.Name = "tsmStageCalibrate";
-            this.tsmStageCalibrate.Size = new System.Drawing.Size(157, 33);
+            this.tsmStageCalibrate.Size = new System.Drawing.Size(104, 24);
             this.tsmStageCalibrate.Text = "平台调控(&T)";
             // 
             // tsmMotionCalibrate
             // 
             this.tsmMotionCalibrate.Name = "tsmMotionCalibrate";
-            this.tsmMotionCalibrate.Size = new System.Drawing.Size(284, 38);
+            this.tsmMotionCalibrate.Size = new System.Drawing.Size(190, 24);
             this.tsmMotionCalibrate.Text = "运动调校";
             this.tsmMotionCalibrate.Click += new System.EventHandler(this.tsmMotionCalibrate_Click);
             // 
             // tsmNozzleCalibrate
             // 
             this.tsmNozzleCalibrate.Name = "tsmNozzleCalibrate";
-            this.tsmNozzleCalibrate.Size = new System.Drawing.Size(284, 38);
+            this.tsmNozzleCalibrate.Size = new System.Drawing.Size(190, 24);
             this.tsmNozzleCalibrate.Text = "喷头对准";
             this.tsmNozzleCalibrate.Click += new System.EventHandler(this.tsbNozzleCalibrate_Click);
             // 
             // tsmBasicTest
             // 
             this.tsmBasicTest.Name = "tsmBasicTest";
-            this.tsmBasicTest.Size = new System.Drawing.Size(284, 38);
+            this.tsmBasicTest.Size = new System.Drawing.Size(190, 24);
             this.tsmBasicTest.Text = "基本测试";
             this.tsmBasicTest.Click += new System.EventHandler(this.tsmBasicTest_Click_1);
             // 
             // tsmPressureSet
             // 
             this.tsmPressureSet.Name = "tsmPressureSet";
-            this.tsmPressureSet.Size = new System.Drawing.Size(284, 38);
+            this.tsmPressureSet.Size = new System.Drawing.Size(190, 24);
             this.tsmPressureSet.Text = "压力设置";
             this.tsmPressureSet.Click += new System.EventHandler(this.tsmPressureSet_Click);
             // 
             // tsmRotSet
             // 
             this.tsmRotSet.Name = "tsmRotSet";
-            this.tsmRotSet.Size = new System.Drawing.Size(284, 38);
+            this.tsmRotSet.Size = new System.Drawing.Size(190, 24);
             this.tsmRotSet.Text = "转速设置";
             this.tsmRotSet.Click += new System.EventHandler(this.tsmRotSet_Click);
             // 
             // tsmTemperature
             // 
             this.tsmTemperature.Name = "tsmTemperature";
-            this.tsmTemperature.Size = new System.Drawing.Size(284, 38);
+            this.tsmTemperature.Size = new System.Drawing.Size(190, 24);
             this.tsmTemperature.Text = "高低温喷头设置";
             this.tsmTemperature.Click += new System.EventHandler(this.tsmTemperature_Click);
             // 
             // tsmDCPower
             // 
             this.tsmDCPower.Name = "tsmDCPower";
-            this.tsmDCPower.Size = new System.Drawing.Size(284, 38);
+            this.tsmDCPower.Size = new System.Drawing.Size(190, 24);
             this.tsmDCPower.Text = "程控电源";
             this.tsmDCPower.Click += new System.EventHandler(this.tsmDCPower_Click);
             // 
             // tsmSyringePump
             // 
             this.tsmSyringePump.Name = "tsmSyringePump";
-            this.tsmSyringePump.Size = new System.Drawing.Size(284, 38);
+            this.tsmSyringePump.Size = new System.Drawing.Size(190, 24);
             this.tsmSyringePump.Text = "注射泵控制";
             this.tsmSyringePump.Click += new System.EventHandler(this.tsmSyringePump_Click);
             // 
             // FrmtsmTemptTableCtrl
             // 
             this.FrmtsmTemptTableCtrl.Name = "FrmtsmTemptTableCtrl";
-            this.FrmtsmTemptTableCtrl.Size = new System.Drawing.Size(284, 38);
+            this.FrmtsmTemptTableCtrl.Size = new System.Drawing.Size(190, 24);
             this.FrmtsmTemptTableCtrl.Text = "恒温平台控制";
             this.FrmtsmTemptTableCtrl.Click += new System.EventHandler(this.FrmtsmTemptTableCtrl_Click);
             // 
@@ -399,41 +399,41 @@
             this.tsmSysDiagnose});
             this.tsmStatusView.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tsmStatusView.Name = "tsmStatusView";
-            this.tsmStatusView.Size = new System.Drawing.Size(156, 33);
+            this.tsmStatusView.Size = new System.Drawing.Size(106, 24);
             this.tsmStatusView.Text = "状态查看(&V)";
             // 
             // tsmOpenCamera
             // 
             this.tsmOpenCamera.Name = "tsmOpenCamera";
-            this.tsmOpenCamera.Size = new System.Drawing.Size(212, 38);
+            this.tsmOpenCamera.Size = new System.Drawing.Size(142, 24);
             this.tsmOpenCamera.Text = "摄像头";
             this.tsmOpenCamera.Click += new System.EventHandler(this.tsmOpenCamera_Click);
             // 
             // tsmMotionMonitor
             // 
             this.tsmMotionMonitor.Name = "tsmMotionMonitor";
-            this.tsmMotionMonitor.Size = new System.Drawing.Size(212, 38);
+            this.tsmMotionMonitor.Size = new System.Drawing.Size(142, 24);
             this.tsmMotionMonitor.Text = "运动监测";
             this.tsmMotionMonitor.Click += new System.EventHandler(this.tsmMotionMonitor_Click);
             // 
             // tsmPathDisplay
             // 
             this.tsmPathDisplay.Name = "tsmPathDisplay";
-            this.tsmPathDisplay.Size = new System.Drawing.Size(212, 38);
+            this.tsmPathDisplay.Size = new System.Drawing.Size(142, 24);
             this.tsmPathDisplay.Text = "运动轨迹";
             this.tsmPathDisplay.Click += new System.EventHandler(this.tsmPathDisplay_Click);
             // 
             // tsmPrintStatus
             // 
             this.tsmPrintStatus.Name = "tsmPrintStatus";
-            this.tsmPrintStatus.Size = new System.Drawing.Size(212, 38);
+            this.tsmPrintStatus.Size = new System.Drawing.Size(142, 24);
             this.tsmPrintStatus.Text = "打印状态";
             this.tsmPrintStatus.Click += new System.EventHandler(this.tsmPrintStatus_Click);
             // 
             // tsmSysDiagnose
             // 
             this.tsmSysDiagnose.Name = "tsmSysDiagnose";
-            this.tsmSysDiagnose.Size = new System.Drawing.Size(212, 38);
+            this.tsmSysDiagnose.Size = new System.Drawing.Size(142, 24);
             this.tsmSysDiagnose.Text = "系统自检";
             this.tsmSysDiagnose.Click += new System.EventHandler(this.tsmSysDiagnose_Click);
             // 
@@ -445,34 +445,33 @@
             this.tsmAbout});
             this.tsmSysHelp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.tsmSysHelp.Name = "tsmSysHelp";
-            this.tsmSysHelp.Size = new System.Drawing.Size(110, 33);
+            this.tsmSysHelp.Size = new System.Drawing.Size(75, 24);
             this.tsmSysHelp.Text = "帮助(&H)";
             // 
             // tsmUserManual
             // 
             this.tsmUserManual.Name = "tsmUserManual";
-            this.tsmUserManual.Size = new System.Drawing.Size(245, 38);
+            this.tsmUserManual.Size = new System.Drawing.Size(164, 24);
             this.tsmUserManual.Text = "用户手册(&D)";
             this.tsmUserManual.Click += new System.EventHandler(this.tsmUserManual_Click);
             // 
             // tsmTechSupport
             // 
             this.tsmTechSupport.Name = "tsmTechSupport";
-            this.tsmTechSupport.Size = new System.Drawing.Size(245, 38);
+            this.tsmTechSupport.Size = new System.Drawing.Size(164, 24);
             this.tsmTechSupport.Text = "技术支持(&S)";
             this.tsmTechSupport.Click += new System.EventHandler(this.tsmTechSupport_Click);
             // 
             // tsmAbout
             // 
             this.tsmAbout.Name = "tsmAbout";
-            this.tsmAbout.Size = new System.Drawing.Size(245, 38);
+            this.tsmAbout.Size = new System.Drawing.Size(164, 24);
             this.tsmAbout.Text = "关于软件(&A)";
             this.tsmAbout.Click += new System.EventHandler(this.tsmAbout_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmPrintingOperation,
@@ -482,7 +481,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1484, 37);
+            this.menuStrip1.Size = new System.Drawing.Size(1484, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -529,9 +528,9 @@
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbPrintGuide,
             this.tsbSysHelp});
-            this.toolStrip2.Location = new System.Drawing.Point(0, 72);
+            this.toolStrip2.Location = new System.Drawing.Point(0, 61);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(92, 759);
+            this.toolStrip2.Size = new System.Drawing.Size(91, 770);
             this.toolStrip2.TabIndex = 11;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -554,9 +553,9 @@
             this.tsbSetPressure,
             this.tsbRotaryValve,
             this.tsbWeightCtrl});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 37);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1484, 35);
+            this.toolStrip1.Size = new System.Drawing.Size(1484, 33);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -701,14 +700,14 @@
             this.tsbWeightCtrl.Image = ((System.Drawing.Image)(resources.GetObject("tsbWeightCtrl.Image")));
             this.tsbWeightCtrl.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbWeightCtrl.Name = "tsbWeightCtrl";
-            this.tsbWeightCtrl.Size = new System.Drawing.Size(137, 33);
+            this.tsbWeightCtrl.Size = new System.Drawing.Size(105, 30);
             this.tsbWeightCtrl.Text = "称重模块";
             this.tsbWeightCtrl.Visible = false;
             this.tsbWeightCtrl.Click += new System.EventHandler(this.tsbWeightCtrl_Click);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
