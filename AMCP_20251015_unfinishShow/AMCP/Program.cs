@@ -14,13 +14,23 @@ namespace AMCP
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-      
         static void Main()
         {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                SetProcessDpiAwareness();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMain());
-            //Application.Run(new FrmUsersForm());        
+        }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
+        private static void SetProcessDpiAwareness()
+        {
+            SetProcessDPIAware();
         }
     }
 }
