@@ -102,7 +102,7 @@ namespace AMCP
         {
             timer1.Tag = "Connecting";
             timer1.Start();
-            
+
         }
 
         private void rdoConnect_CheckedChanged(object sender, EventArgs e)
@@ -125,6 +125,7 @@ namespace AMCP
                     if (GV.PrintingObj.OpenCommEthernet(GV.IpAddr) && GV.PrintingObj.OpenPMCommEthernet(GV.PMC.IpAddress))
                     {
                         MakeConnectedState(ConnectMode.ConnectController);
+                        MakeConnectedState(ConnectMode.ConnectPMController);
                     }
                     else
                     {
@@ -213,7 +214,7 @@ namespace AMCP
                     break;
                 case ConnectMode.ConnectSimulator://平面电机暂未开发仿真模式
                     ConnOn.Visible = true;
-                    
+
                     if (!GV.bgWorker.IsBusy)
                     {
                         GV.bgWorker.RunWorkerAsync();
@@ -258,11 +259,10 @@ namespace AMCP
                     break;
                 case ConnectMode.ConnectPMController:
                     //20251013连接平面电机控制器
-                    //新增，将动子移动到各自的中心
                     CheckIfInMultiOperations();//检查动子数量
                     ConnPMon.Visible = GV.PrintingObj.bPMConnected;
                     break;
-                    case ConnectMode.DisconnectPMController:
+                case ConnectMode.DisconnectPMController:
                     ConnPMon.Visible = false;
                     break;
                 default:
@@ -374,7 +374,6 @@ namespace AMCP
             if (btnInitSys.Text == "初始化") // 启动初始化buffer
             {
                 InitMotionSys();
-                //新增，将动子移动到各自的中心
             }
             else            // 终止初始化buffer
             {
@@ -452,24 +451,24 @@ namespace AMCP
             try
             {
                 if (xbotCount > 0)
-                {            
+                {
                     //激活
                     GV.PrintingObj.ActiveXbot();
                     //获取控制器状态
                     GV.PrintingObj.CheckPMCStatus();
-                    
+
                     if (GV.PMC.pmc_activating == true || GV.PMC.pmc_fullcontrol == true)
                     {
                         //GV.PrintingObj.LinearMotion2Center();//移动到中心
                         //MessageBox.Show("检测到" + xbotCount.ToString() + " 个动子");
                         //动子号赋值
                         GV.PrintingObj.NamingXbotIDs();
-                    }             
+                    }
                 }
             }
             catch (Exception ex)
             {
-                
+
             }
         }
         /// <summary>
@@ -488,6 +487,9 @@ namespace AMCP
                 {
                     GV.PrintingObj.Ch.RunBuffer(0, "SIMULATOR");
                     //GV.PrintingObj.Ch.RunBuffer(5);
+                    //动子复位
+                    //GV.PrintingObj.MoveXbotSixDof(GV.PMC.arrXBotIds[0], 360, 120, 1, 0, 0, 0);
+                    //GV.PrintingObj.MoveXbotSixDof(GV.PMC.arrXBotIds[0], 120, 120, 1, 0, 0, 0);
                 }
                 lblConnectStatus.Text = "正在初始化，请稍候...";
                 lblConnectStatus.Refresh();
@@ -611,7 +613,7 @@ namespace AMCP
         {
             //if (GV.PrintingObj.IfConnected()) return;
             // 连接到控制器（龙门+平面电机）
-            if (GV.PrintingObj.OpenCommEthernet(GV.IpAddr) )//&& GV.PrintingObj.OpenPMCommEthernet(GV.PMC.IpAddress))
+            if (GV.PrintingObj.OpenCommEthernet(GV.IpAddr))//&& GV.PrintingObj.OpenPMCommEthernet(GV.PMC.IpAddress))
             {
                 MakeConnectedState(ConnectMode.ConnectController);
             }
@@ -635,7 +637,7 @@ namespace AMCP
         }
         private void btnConnectPMC_Click(object sender, EventArgs e)
         {
-            if ( GV.PrintingObj.OpenPMCommEthernet(GV.PMC.IpAddress))
+            if (GV.PrintingObj.OpenPMCommEthernet(GV.PMC.IpAddress))
             {
                 MakeConnectedState(ConnectMode.ConnectPMController);
             }
@@ -665,6 +667,18 @@ namespace AMCP
             }
         }
 
-      
+        private void chkXbot_CheckedChanged(object sender, EventArgs e)
+        {
+            Control ctrl = sender as Control;
+            string str = ctrl.Name;
+            if (str == "chkXbotA")
+            {
+                chkXbotB.Checked = chkXbotA.Checked;
+            }
+            else if (str == "chkXbotB")
+            {
+                chkXbotA.Checked = chkXbotB.Checked;
+            }
+        }
     }
 }

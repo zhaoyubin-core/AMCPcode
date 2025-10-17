@@ -213,12 +213,13 @@ namespace AMCP
         public static bool followCurPosition = false;
         public static bool drawSwitch = false;
         public static int refreshInterval = 40;//指令输入间隔
-        public static int keepPoints = 5000;
+        public static int keepPoints = 5000;//固定显示的点数
         public static AxesType axesType = AxesType.XY_Z;
 
         public static Series seriXY, seriXY1, seriZ0, seriZ01;
-        public static Series seriXZ, seriXZ1, seriY0, seriY01;
+        public static Series seriXZ, seriXZ1, seriY0, seriY01;    
         public static Series seriYZ, seriX0, seriYZ1, seriX01;
+        public static Series seriXY2, seriXZ2, seriYZ2, seriZ02, seriY02, seriX02;
 
         //public static Series seriTvelX, seriTvelY, seriTvelZ, seriTvelG;
 
@@ -726,7 +727,7 @@ namespace AMCP
                     }
                 }
                 frmStatusMonitor.UpdateMotionStatus(PrintingObj.Status);//实时更新显示运动状态
-                SetSeriesValue();
+                SetSeriesValue();//显示运动轨迹
                 //显示层
                 frmPathTrace.ShowLayer();
                 frmPathTrace.ShowMoveCmd();
@@ -1182,26 +1183,32 @@ namespace AMCP
         {
             InitSeries(ref seriXY, 0);
             InitSeries(ref seriXY1, 1);
+            InitSeries(ref seriXY2, 3);
             seriXY1.Points.AddXY(0, 0);
 
             InitSeries(ref seriZ0, 0);
             InitSeries(ref seriZ01, 1);
+            InitSeries(ref seriZ02, 3);
             seriZ01.Points.AddXY(5, 0);
 
             InitSeries(ref seriXZ, 0);
             InitSeries(ref seriXZ1, 1);
+            InitSeries(ref seriXZ2, 3); 
             seriXZ1.Points.AddXY(0, 0);
 
             InitSeries(ref seriY0, 0);
             InitSeries(ref seriY01, 1);
+            InitSeries(ref seriY02, 3);
             seriY01.Points.AddXY(5, 0);
 
             InitSeries(ref seriYZ, 0);
             InitSeries(ref seriYZ1, 1);
+            InitSeries(ref seriYZ2, 3);
             seriYZ1.Points.AddXY(0, 0);
 
             InitSeries(ref seriX0, 0);
             InitSeries(ref seriX01, 1);
+            InitSeries(ref seriX02, 3);
             seriX01.Points.AddXY(5, 0);
 
             //InitSeries(ref seriTvelX, 2, 0);
@@ -1242,7 +1249,7 @@ namespace AMCP
             }
             switch (seriType)
             {
-                case 0: // Draw lines
+                case 0: // Draw linesA喷头
                     seri.ChartArea = "ChartArea1";
                     seri.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     seri.Name = "Series0";
@@ -1260,12 +1267,19 @@ namespace AMCP
                     seri.Name = "Series1";
                     seri.YValuesPerPoint = 1;
                     break;
-                case 2:
+                case 2://框架
                     seri.ChartArea = "ChartArea1";
                     seri.ChartType = SeriesChartType.Line;
                     seri.Name = "Series2";
                     seri.Color = color;
                     break;
+                case 3://B喷头
+                    seri.ChartArea = "ChartArea1";
+                    seri.ChartType = SeriesChartType.Line;
+                    seri.Name = "Series3";
+                    seri.Color = color;
+                    break;
+
             }
         }
 
@@ -1317,9 +1331,13 @@ namespace AMCP
         {
             StageStatus status = GV.PrintingObj.Status;
             double threshold = 0.1;
-            double x = status.fPosX - PrintingObj.nozzleDX;
+            double x = status.fPosX - PrintingObj.nozzleDX;//喷头切换时，在界面补偿偏移量
             double y = status.fPosY - PrintingObj.nozzleDY;
             double z = status.fPosZ - PrintingObj.nozzleDZ;
+
+            double xB = status.fPosX + GV.stageXb - GV.stageXa;//b喷头显示的
+            double yB = status.fPosY;
+            double zB = status.fPosZ;
 
             double xDisp = x + dX_AB;
 
@@ -1328,20 +1346,23 @@ namespace AMCP
                 seriXY.Points.AddXY(x, y);
                 seriXZ.Points.AddXY(x, z);
                 seriYZ.Points.AddXY(y, z);
+                seriXY2.Points.AddXY(xB, yB);
+                seriXZ2.Points.AddXY(xB, zB);
+                seriYZ2.Points.AddXY(yB, zB);
                 int iMax = seriXY.Points.Count - 1;
-
-                if (status.isExtruding)
+                int iMaxB = seriXY2.Points.Count - 1;
+                if (status.isExtruding)//出丝显示蓝色，不出丝显示灰色
                 {
                     seriXY.Points[iMax].BorderWidth = 3;
                     seriXZ.Points[iMax].BorderWidth = 3;
                     seriYZ.Points[iMax].BorderWidth = 3;
-                    if (status.nozzleID == 1)
-                    {
-                        seriXY.Points[iMax].Color = Color.DarkGreen;
-                        seriXZ.Points[iMax].Color = Color.DarkGreen;
-                        seriYZ.Points[iMax].Color = Color.DarkGreen;
-                    }
-                    else
+                    //if (status.nozzleID == 1)
+                    //{
+                    //    seriXY.Points[iMax].Color = Color.DarkGreen;
+                    //    seriXZ.Points[iMax].Color = Color.DarkGreen;
+                    //    seriYZ.Points[iMax].Color = Color.DarkGreen;
+                    //}
+                    //else
                     {
                         seriXY.Points[iMax].Color = Color.Blue;
                         seriXZ.Points[iMax].Color = Color.Blue;
@@ -1357,6 +1378,34 @@ namespace AMCP
                     seriXZ.Points[iMax].Color = Color.Gray;
                     seriYZ.Points[iMax].Color = Color.Gray;
                 }
+                //B喷头
+                if(status.isExtruding2)
+                {
+                    seriXY2.Points[iMaxB].BorderWidth = 3;
+                    seriXZ2.Points[iMaxB].BorderWidth = 3;
+                    seriYZ2.Points[iMaxB].BorderWidth = 3;
+                    //if (status.nozzleID == 1)
+                    //{
+                    //    seriXY.Points[iMax].Color = Color.DarkGreen;
+                    //    seriXZ.Points[iMax].Color = Color.DarkGreen;
+                    //    seriYZ.Points[iMax].Color = Color.DarkGreen;
+                    //}
+                    //else
+                    {
+                        seriXY2.Points[iMaxB].Color = Color.DarkGreen;
+                        seriXZ2.Points[iMaxB].Color = Color.DarkGreen;
+                        seriYZ2.Points[iMaxB].Color = Color.DarkGreen;
+                    }
+                }
+                else
+                {
+                    seriXY2.Points[iMaxB].BorderWidth = 1;
+                    seriXZ2.Points[iMaxB].BorderWidth = 1;
+                    seriYZ2.Points[iMaxB].BorderWidth = 1;
+                    seriXY2.Points[iMaxB].Color = Color.Gray;
+                    seriXZ2.Points[iMaxB].Color = Color.Gray;
+                    seriYZ2.Points[iMaxB].Color = Color.Gray;
+                }
 
                 seriX0.Points.AddXY(5, x);
                 seriY0.Points.AddXY(5, y);
@@ -1365,7 +1414,7 @@ namespace AMCP
                 xLast = x;
                 yLast = y;
                 zLast = z;
-            }
+            }        
 
             //seriX01.Points[0].XValue = 5;
             seriX01.Points[0].YValues[0] = x;
@@ -1394,7 +1443,7 @@ namespace AMCP
             //    seriTvelZ.Points.RemoveAt(0);
             //    seriTvelG.Points.RemoveAt(0);
             //}
-            while (seriXY.Points.Count > keepPoints)
+            while (seriXY.Points.Count > keepPoints || seriXY2.Points.Count > keepPoints)
             {
                 seriXY.Points.RemoveAt(0);
                 seriXZ.Points.RemoveAt(0);
@@ -1402,6 +1451,13 @@ namespace AMCP
                 seriX0.Points.RemoveAt(0);
                 seriY0.Points.RemoveAt(0);
                 seriZ0.Points.RemoveAt(0);
+
+                seriXY2.Points.RemoveAt(0);
+                seriXZ2.Points.RemoveAt(0);
+                seriYZ2.Points.RemoveAt(0);
+                seriX02.Points.RemoveAt(0);
+                seriY02.Points.RemoveAt(0);
+                seriZ02.Points.RemoveAt(0);
             }
         }
 
@@ -1497,8 +1553,10 @@ namespace AMCP
             double[] endPoint = new double[] { 0.0, 0.0 };
             string strGcode = "";
             int nozzleID = 0;
-            bool LaterRotate = false;
-            bool TimeRotate = false;
+            //bool LaterRotate = false;
+            //bool TimeRotate = false;
+            int tempIndex = 0;
+            int tempPos = 2;
 
             for (int layer = 0; layer < matrixP.Length; layer++)
             {
@@ -1531,13 +1589,13 @@ namespace AMCP
                     {
                         double xx = m[im0] - GV.lenAdvanced;
                         strGcode = "G0 X" + xx.ToString() + " Y" + p[ip0].ToString();   // G0 X93.875 Y93.875
-                        PrintingObj.qMoveXYTo(xx, p[ip0], vmove, xLast, yLast, layer, strGcode);
+                        PrintingObj.qMoveXYTo(xx, p[ip0], vmove, xLast, yLast, layer, strGcode, tempIndex, tempPos);
                         xLast = xx;
                     }
                     else
                     {
                         strGcode = "G0 X" + m[im0].ToString() + " Y" + p[ip0].ToString();   // G0 X93.875 Y93.875
-                        PrintingObj.qMoveXYTo(m[im0], p[ip0], vmove, xLast, yLast, layer, strGcode);
+                        PrintingObj.qMoveXYTo(m[im0], p[ip0], vmove, xLast, yLast, layer, strGcode, tempIndex, tempPos);
                         xLast = m[im0];
                     }
                     yLast = p[ip0];
@@ -1563,12 +1621,12 @@ namespace AMCP
                     }
                     // move to start point of this layer
                     strGcode = "G0 X" + p[ip0].ToString() + " Y" + m[im0].ToString();   // G0 X93.875 Y93.875
-                    PrintingObj.qMoveXYTo(p[ip0], m[im0], vmove, xLast, yLast, layer, strGcode);
+                    PrintingObj.qMoveXYTo(p[ip0], m[im0], vmove, xLast, yLast, layer, strGcode, tempIndex, tempPos);
                     xLast = p[ip0]; yLast = m[im0];
                 }
                 PrintingObj.qWaitMoveEnd("WaitMoveEnd"); // wait until print-head moved to line start
                 strGcode = "G0 Z" + zprint.ToString();
-                PrintingObj.qMoveAxisTo(Z, zprint, vmove, zLast, layer, strGcode);
+                PrintingObj.qMoveAxisTo(Z, zprint, vmove, zLast, layer, strGcode, tempIndex, tempPos);
                 zLast = zprint;
                 PrintingObj.qWaitMoveEnd("WaitMoveEnd");
 
@@ -1614,7 +1672,7 @@ namespace AMCP
                     {
                         endPoint = new double[2] { m[im], p[ip] };
                         strGcode = "G1 X" + endPoint[0].ToString() + " Y" + endPoint[1].ToString();
-                        PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, vprint, layer, strGcode);
+                        PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, vprint, layer, strGcode, tempIndex, tempPos);
                         startPoint = endPoint;
                         endPoint = new double[2] { m[im], p[ip_next] };
                         centerPoint = new double[2] { m[im], (p[ip] + p[ip_next]) * 0.5 };
@@ -1627,7 +1685,7 @@ namespace AMCP
                         {
                             strGcode = "G3 XC" + centerPoint[0].ToString() + " YC" + centerPoint[1].ToString() + " X" + endPoint[0].ToString() + " Y" + endPoint[1].ToString() + " R" + Math.PI.ToString();
                         }
-                        PrintingObj.qSegmentArc2(Axes, centerPoint, endPoint, (isClockwise ? -1 : 1) * Math.PI, vprint, vprint, layer, strGcode);
+                        PrintingObj.qSegmentArc2(Axes, centerPoint, endPoint, (isClockwise ? -1 : 1) * Math.PI, vprint, vprint, layer, strGcode, tempIndex, tempPos);
                         //PrintingObj.qMoveAxisTo(axis, m[im], vprint, xLast); PrintingObj.qWaitMoveEnd(); // move to line end                           
                         xLast = m[im];
                     }
@@ -1635,7 +1693,7 @@ namespace AMCP
                     {
                         endPoint = new double[2] { p[ip], m[im] };
                         strGcode = "G1 X" + endPoint[0].ToString() + " Y" + endPoint[1].ToString();
-                        PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, vprint, layer, strGcode);
+                        PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, vprint, layer, strGcode, tempIndex, tempPos);
                         startPoint = endPoint;
                         endPoint = new double[2] { p[ip_next], m[im] };
                         centerPoint = new double[2] { (p[ip] + p[ip_next]) * 0.5, m[im] };
@@ -1647,7 +1705,7 @@ namespace AMCP
                         {
                             strGcode = "G3 XC" + centerPoint[0].ToString() + " YC" + centerPoint[1].ToString() + " X" + endPoint[0].ToString() + " Y" + endPoint[1].ToString() + " R" + Math.PI.ToString();
                         }
-                        PrintingObj.qSegmentArc2(Axes, centerPoint, endPoint, (isClockwise ? -1 : 1) * Math.PI, vprint, vprint, layer, strGcode);
+                        PrintingObj.qSegmentArc2(Axes, centerPoint, endPoint, (isClockwise ? -1 : 1) * Math.PI, vprint, vprint, layer, strGcode, tempIndex, tempPos);
                         //PrintingObj.qMoveAxisTo(axis, m[im], vprint, yLast); PrintingObj.qWaitMoveEnd(); // move to line end                           
                         yLast = m[im];
                     }
@@ -1667,7 +1725,7 @@ namespace AMCP
                 {
                     endPoint = new double[2] { m[im], p[ip] };
                     strGcode = "G1 X" + endPoint[0].ToString() + " Y" + endPoint[1].ToString();
-                    PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, 0, layer, strGcode);
+                    PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, 0, layer, strGcode, tempIndex, tempPos);
                     startPoint = endPoint;
                     xLast = m[im];
                 }
@@ -1675,7 +1733,7 @@ namespace AMCP
                 {
                     endPoint = new double[2] { p[ip], m[im] };
                     strGcode = "G1 X" + endPoint[0].ToString() + " Y" + endPoint[1].ToString();
-                    PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, 0, layer, strGcode);
+                    PrintingObj.qSegmentLine(Axes, startPoint, endPoint, vprint, 0, layer, strGcode, tempIndex, tempPos);
                     startPoint = endPoint;
                     yLast = m[im];
                 }
@@ -1753,7 +1811,7 @@ namespace AMCP
             PrintingObj.qSwitchNozzle(0); // 切换喷头
             //打印完提针
             strGcode = "G0 Z" + (0).ToString();
-            PrintingObj.qMoveAxisTo(Z, 0, vmove, zLast, 0, strGcode); zLast = 0;
+            PrintingObj.qMoveAxisTo(Z, 0, vmove, zLast, 0, strGcode, tempIndex, tempPos); zLast = 0;
             PrintingObj.qWaitMoveEnd("WaitMoveEnd"); // nozzle up
             //打印模拟转运
             if (basalTransport)
@@ -3655,13 +3713,18 @@ public class StageStatus
 
 public class LineInfo
 {
-    public int layer;
-    public string gCode;
+    public int layer;//层
+    public string gCode;//路径
+    public int index;//序号
+    public int printPos;//打印位置，0：A工位，1：B工位，2：双工位
 
-    public LineInfo(int layer, string gCode)
+
+    public LineInfo(int layer, string gCode, int index = 0, int printPos = 0)
     {
         this.layer = layer;
         this.gCode = gCode;
+        this.index = index;
+        this.printPos = printPos;
     }
 }
 

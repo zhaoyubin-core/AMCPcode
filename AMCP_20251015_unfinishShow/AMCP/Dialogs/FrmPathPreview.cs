@@ -1,14 +1,15 @@
-﻿using System;
+﻿using OpenCvSharp;
+using PMCLIB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using System.Threading;
-using PMCLIB;
 
 namespace AMCP
 {
@@ -24,7 +25,9 @@ namespace AMCP
         public static Series seriXZ, seriXZ1, seriY0, seriY01;
         public static Series seriYZ, seriX0, seriYZ1, seriX01;
         public static Series seriXY2, seriZ02;//B工位序列点
-        
+        public static Series seriXZ2, seriY2;//XZ平面
+        public static Series seriYZ2, seriX2;//YZ平面
+
         public static Series seriHide;
         bool followCurPosition = false;
         public int refreshInterval = 50;
@@ -43,7 +46,7 @@ namespace AMCP
         public static void InitAllSeries()
         {
             GV.InitSeries(ref seriXY, 0, 1);//初始化序列
-            GV.InitSeries(ref seriXY2, 0, 1);//初始化B工位序列
+            GV.InitSeries(ref seriXY2, 3, 1);//初始化B工位序列
             //GV.InitSeries(ref seriXY1, 1, 0);
             //seriXY1.Points.AddXY(0, 0);
 
@@ -52,6 +55,8 @@ namespace AMCP
             //seriZ01.Points.AddXY(5, 0);
 
             GV.InitSeries(ref seriXZ, 0);
+            GV.InitSeries(ref seriXZ2, 3);
+
             //GV.InitSeries(ref seriXZ1, 1);
             //seriXZ1.Points.AddXY(0, 0);
 
@@ -60,16 +65,21 @@ namespace AMCP
             //seriY01.Points.AddXY(5, 0);
 
             GV.InitSeries(ref seriYZ, 0);
+            GV.InitSeries(ref seriYZ2, 3);
             //GV.InitSeries(ref seriYZ1, 1);
             //seriYZ1.Points.AddXY(0, 0);
 
             //GV.InitSeries(ref seriX0, 0);
             //GV.InitSeries(ref seriX01, 1);
             //GV.seriX01.Points.AddXY(5, 0);
+
+            //初始化平台
             GV.InitSeries(ref seriXY1, 2, 10);
             GV.InitSeries(ref seriXZ1, 2, 10);
             GV.InitSeries(ref seriYZ1, 2, 10);
+
             GV.InitSeries(ref seriHide, 2, 10);
+
             LoadDoubleStageFrame();
         }
 
@@ -380,8 +390,10 @@ namespace AMCP
 
 
                     positionChart.Series[0] = seriXY;
-                    //positionChart.Series[1] = seriXY1;
+                    //positionChart.Series[1] = seriXY2;
                     ShowDoubleFrame();
+                    ShowPos2();
+
                     //if (showDoubleFrame)
                     //{
                     //    positionChart.Series[1] = seriXY1;
@@ -404,7 +416,9 @@ namespace AMCP
 
                     positionChart.Series[0] = seriXZ;
                     //positionChart.Series[1] = seriXZ1;
+                    //positionChart.Series[2] = seriXZ2;
                     ShowDoubleFrame();
+                    ShowPos2();
                     break;
 
                 case AxesType.YZ_X:
@@ -418,8 +432,9 @@ namespace AMCP
                     positionChart.ChartAreas[0].AxisY.Minimum = 0;
 
                     positionChart.Series[0] = seriYZ;
-                    //positionChart.Series[1] = seriYZ1;
+     
                     ShowDoubleFrame();
+                    ShowPos2();
                     break;
             }
         }
@@ -526,9 +541,16 @@ namespace AMCP
         private void ClearChart()
         {
             positionChart.Series[0].Points.Clear();
-            seriXY.Points.Clear();
+            positionChart.Series[2].Points.Clear();
+
+            seriXY.Points.Clear();//清空序列点
             seriXZ.Points.Clear();
             seriYZ.Points.Clear();
+
+            seriXY2.Points.Clear();
+            seriXZ2.Points.Clear();
+            seriYZ2.Points.Clear();
+
             //seriX0.Points.Clear();
             //seriY0.Points.Clear();
             //seriZ0.Points.Clear();
@@ -592,7 +614,7 @@ namespace AMCP
             ky = (chart.ChartAreas[0].AxisY.Maximum - chart.ChartAreas[0].AxisY.Minimum) / (chart.Height * chart.ChartAreas[0].Position.Height * 0.01 * chart.ChartAreas[0].InnerPlotPosition.Height * 0.01);
         }
 
-        DataManagement.CmdDataStruct[] arrCds;
+        DataManagement.CmdDataStruct[] arrCds;//获取整个的导入的指令信息
         DataManagement.CmdDataStruct cds;
         double x;
         double y;
@@ -620,11 +642,23 @@ namespace AMCP
 
             // 添加第1层第1个点（取当前位置）:
             i = 0;
-            x = GV.PrintingObj.Status.fPosX;
-            y = GV.PrintingObj.Status.fPosY;
-            z = GV.PrintingObj.Status.fPosZ;
 
-            LineInfo info = new LineInfo(-1, "");
+            if (GV.connMode == ConnectMode.ConnectSimulator)
+            {
+                //设置仿真时的起点位置为动子的左上角
+                x = GV.stageXa - GV.sizePrint / 2.0;
+                y = GV.stageY - GV.sizePrint / 2.0;
+                z = 30;
+            }
+            else
+            {             
+                x = GV.PrintingObj.Status.fPosX;
+                y = GV.PrintingObj.Status.fPosY;
+                z = GV.PrintingObj.Status.fPosZ; 
+            }
+           
+
+            LineInfo info = new LineInfo(-1, "", 0, 2);
             AddSeriesPoint(x, y, z, info); 
             i++;
             //GV.seriXY1.Points[0].XValue = x;
@@ -676,10 +710,14 @@ namespace AMCP
                 cds = arrCds[i];//
                 int layer = -1;
                 string gCode = "";
+                int index = 0;
+                int printPos = 2;
                 try
                 {
                     layer = Convert.ToInt32(cds.Para9);
                     gCode = cds.Para10;
+                    index = Convert.ToInt32(cds.Para11);
+                    printPos = Convert.ToInt32(cds.Para12);
                 }
                 catch (Exception ex)
                 {
@@ -705,7 +743,7 @@ namespace AMCP
                             x = xPos;
                             y = yPos;
 
-                            LineInfo info = new LineInfo(layer, gCode);
+                            LineInfo info = new LineInfo(layer, gCode, index, printPos);
                             AddSeriesPoint(x, y, z, info);
                             break;
                         }
@@ -731,7 +769,7 @@ namespace AMCP
                                 default:
                                     break;
                             }
-                            LineInfo info = new LineInfo(layer, gCode);
+                            LineInfo info = new LineInfo(layer, gCode, index, printPos);
                             AddSeriesPoint(x, y, z, info);
                             break;
                         }
@@ -755,7 +793,7 @@ namespace AMCP
                                 default:
                                     break;
                             }
-                            LineInfo info = new LineInfo(layer, gCode);
+                            LineInfo info = new LineInfo(layer, gCode, index, printPos);
                             AddSeriesPoint(x, y, z, info);
                             break;
                         }
@@ -794,7 +832,7 @@ namespace AMCP
                             double xc = Center[0];
                             double yc = Center[1];
 
-                            LineInfo info = new LineInfo(layer, gCode);
+                            LineInfo info = new LineInfo(layer, gCode, index, printPos);
 
                             double x1, y1, z1, x2, y2, z2; // 圆弧的起点和终点坐标
                             AxesType axesType = AxesType.XY_Z;
@@ -943,7 +981,7 @@ namespace AMCP
                             double xc = centerPoint[0];
                             double yc = centerPoint[1];
 
-                            LineInfo info = new LineInfo(layer, gCode);
+                            LineInfo info = new LineInfo(layer, gCode, index, printPos);
 
                             double x1, y1, z1; // 圆弧的起点
                             AxesType axesType = AxesType.XY_Z;
@@ -1077,7 +1115,7 @@ namespace AMCP
                                         break;
                                 }
                             }
-                            LineInfo info = new LineInfo(layer, gCode);
+                            LineInfo info = new LineInfo(layer, gCode, index, printPos);
                             AddSeriesPoint(x, y, z, info);
                             break;
                         }
@@ -1128,22 +1166,52 @@ namespace AMCP
         //添加路径点
         private void AddSeriesPoint(double x, double y, double z, LineInfo info)
         {
-            seriXY.Points.AddXY(x, y);//添加系列点
-            seriXZ.Points.AddXY(x, z);
-            seriYZ.Points.AddXY(y, z);
+            double offsetX = x + GV.stageXb - GV.stageXa;
+            double offsetY = y;
+            double offsetZ = z;
+            switch (info.printPos)
+            {
+                case 0:
+                    seriXY.Points.AddXY(x, y);//添加系列点
+                    seriXZ.Points.AddXY(x, z);
+                    seriYZ.Points.AddXY(y, z);
+                    break;
+                case 1:
+                    seriXY2.Points.AddXY(offsetX, offsetY);
+                    seriXZ2.Points.AddXY(offsetX, offsetZ); 
+                    seriYZ2.Points.AddXY(offsetY, offsetZ);
+                    break;
+                case 2:
+                    seriXY.Points.AddXY(x, y);//添加系列点
+                    seriXZ.Points.AddXY(x, z);
+                    seriYZ.Points.AddXY(y, z);
+                    seriXY2.Points.AddXY(offsetX, offsetY);
+                    seriXZ2.Points.AddXY(offsetX, offsetZ);
+                    seriYZ2.Points.AddXY(offsetY, offsetZ);
+                    break;
+            }
+            //seriXY.Points.AddXY(x, y);//添加系列点
+            //seriXZ.Points.AddXY(x, z);
+            //seriYZ.Points.AddXY(y, z);
 
             int iMax = seriXY.Points.Count - 1;
+            int iMaxB = seriXY2.Points.Count - 1;
             seriXY.Points[iMax].Tag = info;
+            seriXY2.Points[iMaxB].Tag = info;
+
             //seriXZ.Points[iMax].Tag = info;
             //seriYZ.Points[iMax].Tag = info;
             
             SetPointFormat(seriXY.Points[iMax], info);
             SetPointFormat(seriXZ.Points[iMax], info);
             SetPointFormat(seriYZ.Points[iMax], info);
+
+            SetPointFormat(seriXY2.Points[iMaxB], info);
+            SetPointFormat(seriXZ2.Points[iMaxB], info);
+            SetPointFormat(seriYZ2.Points[iMaxB], info);
             if (info.gCode != "" && (listBox1.Items.Count < 1 || info.gCode != listBox1.Items[0]))
             {
-                listBox1.Items.Insert(0, iMax.ToString() + ". " + info.gCode);
-                
+                listBox1.Items.Insert(0, iMax.ToString() + ". " + info.gCode);             
             }
         }
 
@@ -1270,8 +1338,8 @@ namespace AMCP
                         SetPointFormat(seriYZ.Points[i], info);
                         SetPointFormat(seriXZ.Points[i], info);
                     }
-                }
-                return;
+                }          
+                    return;
             } 
             // 单独显示指定层：指定层显示正常颜色，其下方的各层用浅灰色显示，其上方的各层全部隐藏。
             DataPoint dp = seriXY.Points[0];
@@ -1305,6 +1373,61 @@ namespace AMCP
             } 
         }
 
+
+        /// <summary>
+        //显示当前文件路径
+        /// </summary>
+        /// <param name="layer">层编号。默认为-2，表示显示所有层</param>
+        private void ShowPrintIndex(int index = 0)
+        {
+            //// 显示所有层：
+            //if (layer <= -2)
+            //{
+            //    for (int i = 0; i < seriXY.Points.Count; i++)
+            //    {
+            //        if (seriXY.Points[i].Tag.GetType().Name == "LineInfo")
+            //        {
+            //            LineInfo info = seriXY.Points[i].Tag as LineInfo;
+            //            SetPointFormat(seriXY.Points[i], info);
+            //            SetPointFormat(seriYZ.Points[i], info);
+            //            SetPointFormat(seriXZ.Points[i], info);
+            //        }
+            //    }
+            //    return;
+            //}
+
+            // 显示指定序号：指定层显示正常颜色，其下方的各层用浅灰色显示，其上方的各层全部隐藏。
+            DataPoint dp = seriXY.Points[0];
+            for (int i = 0; i < seriXY.Points.Count; i++)
+            {
+                dp = seriXY.Points[i];
+                if (dp.Tag.GetType().Name == "LineInfo")
+                {
+                    LineInfo info = dp.Tag as LineInfo;
+
+                    //if (info.layer < layer) // 在指定层下方的层
+                    //{
+                    //    SetPointFormat(seriXY.Points[i], info, LayerShowMode.Shadow);
+                    //    SetPointFormat(seriYZ.Points[i], info, LayerShowMode.Shadow);
+                    //    SetPointFormat(seriXZ.Points[i], info, LayerShowMode.Shadow);
+                    //}
+                    //else if (info.layer == layer) // 指定层
+                    //{
+                    //    SetPointFormat(seriXY.Points[i], info, LayerShowMode.Normal);
+                    //    SetPointFormat(seriYZ.Points[i], info, LayerShowMode.Normal);
+                    //    SetPointFormat(seriXZ.Points[i], info, LayerShowMode.Normal);
+                    //}
+                    //else // 在指定层上方（隐藏显示）
+                    {
+                        SetPointFormat(seriXY.Points[i], info, LayerShowMode.Hide);
+                        SetPointFormat(seriYZ.Points[i], info, LayerShowMode.Hide);
+                        SetPointFormat(seriXZ.Points[i], info, LayerShowMode.Hide);
+                    }
+
+                }
+            }
+        }
+
         private void btnConfirmPrinting_Click(object sender, EventArgs e)
         {
             GV.ConfirmPrinting();
@@ -1335,6 +1458,11 @@ namespace AMCP
         private void button4_Click(object sender, EventArgs e)
         {
             ShowLayer((int)nmudSelectLayer.Value-1);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+
         }
 
         private void FrmPathPreview_KeyDown(object sender, KeyEventArgs e)
@@ -1465,6 +1593,10 @@ namespace AMCP
         {          
             if (show)
             {
+                //if (positionChart.Series.Count > 1)
+                //{
+                //    positionChart.Series.RemoveAt(1); // Remove the existing series at index 1
+                //}
                 switch (axesType)
                 {
                     case AxesType.XY_Z:
@@ -1483,6 +1615,23 @@ namespace AMCP
             else
             {
                 positionChart.Series[1] = seriHide;
+            }
+        }
+        private void ShowPos2()
+        {
+            switch (axesType)
+            {
+                case AxesType.XY_Z:
+                    positionChart.Series[2] = seriXY2;
+                    break;
+
+                case AxesType.XZ_Y:
+                    positionChart.Series[2] = seriXZ2;
+                    break;
+
+                case AxesType.YZ_X:
+                    positionChart.Series[2] = seriYZ2;
+                    break;
             }
         }
     }

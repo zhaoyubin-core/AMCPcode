@@ -119,7 +119,7 @@ namespace AMCP
                 case AxesType.XY_Z:
                     positionChart.ChartAreas[0].AxisX.Title = "X";
                     positionChart.ChartAreas[0].AxisY.Title = "Y";
-                    positionChart2.ChartAreas[0].AxisY.Title = "Z";
+                    positionChart2.ChartAreas[0].AxisY.Title = "Z";//轴3的显示
 
                     positionChart.ChartAreas[0].AxisX.Maximum = GV.X_MAX;
                     positionChart.ChartAreas[0].AxisX.Minimum = 0;
@@ -132,9 +132,10 @@ namespace AMCP
 
                     positionChart.Series[0] = GV.seriXY;
                     positionChart.Series[1] = GV.seriXY1;
+                    positionChart.Series[2] = GV.seriXY2;
+
                     positionChart2.Series[0] = GV.seriZ0;
                     positionChart2.Series[1] = GV.seriZ01;
-
                     break;
 
                 case AxesType.XZ_Y:
@@ -154,6 +155,7 @@ namespace AMCP
                     positionChart.Series[0] = GV.seriXZ;
                     positionChart2.Series[0] = GV.seriY0;
                     positionChart.Series[1] = GV.seriXZ1;
+                    positionChart.Series[2] = GV.seriXZ2;
                     positionChart2.Series[1] = GV.seriY01;
                     break;
 
@@ -174,6 +176,7 @@ namespace AMCP
                     positionChart.Series[0] = GV.seriYZ;
                     positionChart2.Series[0] = GV.seriX0;
                     positionChart.Series[1] = GV.seriYZ1;
+                    positionChart.Series[2] = GV.seriYZ2;
                     positionChart2.Series[1] = GV.seriX01;
 
                     break;
@@ -338,10 +341,17 @@ namespace AMCP
             positionChart2.Series[0].Points.Clear();
             GV.seriXY.Points.Clear();
             GV.seriXZ.Points.Clear();
-            GV.seriYZ.Points.Clear();
+            GV.seriYZ.Points.Clear();  
             GV.seriX0.Points.Clear();
             GV.seriY0.Points.Clear();
             GV.seriZ0.Points.Clear();
+
+            GV.seriXY2.Points.Clear();
+            GV.seriXZ2.Points.Clear();
+            GV.seriYZ2.Points.Clear();
+            GV.seriX02.Points.Clear();
+            GV.seriY02.Points.Clear();
+            GV.seriZ02.Points.Clear();
         }
 
         private void ToolStripMenuItem1_Click(object sender, EventArgs e)

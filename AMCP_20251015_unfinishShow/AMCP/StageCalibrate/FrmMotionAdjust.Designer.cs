@@ -107,7 +107,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.btnMoveUpZ2 = new System.Windows.Forms.Button();
             this.btnMoveDownZ2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnResetxBotA = new System.Windows.Forms.Button();
+            this.btnResetxBotB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -548,7 +549,7 @@
             // 
             this.btnToSetPosition.BackColor = System.Drawing.Color.White;
             this.btnToSetPosition.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.btnToSetPosition.Location = new System.Drawing.Point(355, 144);
+            this.btnToSetPosition.Location = new System.Drawing.Point(382, 145);
             this.btnToSetPosition.Name = "btnToSetPosition";
             this.btnToSetPosition.Size = new System.Drawing.Size(127, 27);
             this.btnToSetPosition.TabIndex = 248;
@@ -560,7 +561,7 @@
             // 
             this.btnStop.BackColor = System.Drawing.Color.White;
             this.btnStop.Font = new System.Drawing.Font("宋体", 10.5F);
-            this.btnStop.Location = new System.Drawing.Point(409, 183);
+            this.btnStop.Location = new System.Drawing.Point(435, 184);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(74, 27);
             this.btnStop.TabIndex = 250;
@@ -724,7 +725,7 @@
             // 
             this.btnDown2MaxZ.BackColor = System.Drawing.Color.White;
             this.btnDown2MaxZ.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDown2MaxZ.Location = new System.Drawing.Point(382, 466);
+            this.btnDown2MaxZ.Location = new System.Drawing.Point(407, 460);
             this.btnDown2MaxZ.Name = "btnDown2MaxZ";
             this.btnDown2MaxZ.Size = new System.Drawing.Size(73, 34);
             this.btnDown2MaxZ.TabIndex = 296;
@@ -738,7 +739,7 @@
             // 
             this.btnUp2Top.BackColor = System.Drawing.Color.White;
             this.btnUp2Top.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnUp2Top.Location = new System.Drawing.Point(382, 426);
+            this.btnUp2Top.Location = new System.Drawing.Point(407, 416);
             this.btnUp2Top.Name = "btnUp2Top";
             this.btnUp2Top.Size = new System.Drawing.Size(73, 34);
             this.btnUp2Top.TabIndex = 295;
@@ -836,7 +837,6 @@
             this.txtZbBottom.Name = "txtZbBottom";
             this.txtZbBottom.Size = new System.Drawing.Size(52, 21);
             this.txtZbBottom.TabIndex = 317;
-            this.txtZbBottom.TextChanged += new System.EventHandler(this.txtZbBottom_TextChanged);
             // 
             // txtZaBottom
             // 
@@ -1031,23 +1031,34 @@
             this.btnMoveDownZ2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMoveDownZ2_MouseDown);
             this.btnMoveDownZ2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMoveDownZ2_MouseUp);
             // 
-            // button1
+            // btnResetxBotA
             // 
-            this.button1.Location = new System.Drawing.Point(495, 252);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 320;
-            this.button1.Text = "动子复位";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnResetxBotA.Location = new System.Drawing.Point(495, 312);
+            this.btnResetxBotA.Name = "btnResetxBotA";
+            this.btnResetxBotA.Size = new System.Drawing.Size(75, 32);
+            this.btnResetxBotA.TabIndex = 320;
+            this.btnResetxBotA.Text = "动子A复位";
+            this.btnResetxBotA.UseVisualStyleBackColor = true;
+            this.btnResetxBotA.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnResetxBotB
+            // 
+            this.btnResetxBotB.Location = new System.Drawing.Point(495, 363);
+            this.btnResetxBotB.Name = "btnResetxBotB";
+            this.btnResetxBotB.Size = new System.Drawing.Size(75, 32);
+            this.btnResetxBotB.TabIndex = 321;
+            this.btnResetxBotB.Text = "动子B复位";
+            this.btnResetxBotB.UseVisualStyleBackColor = true;
+            this.btnResetxBotB.Click += new System.EventHandler(this.btnResetxBotB_Click);
             // 
             // FrmMotionAdjust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(578, 547);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(576, 547);
+            this.Controls.Add(this.btnResetxBotB);
+            this.Controls.Add(this.btnResetxBotA);
             this.Controls.Add(this.lblCurrentSpeed);
             this.Controls.Add(this.lblShowTargetZ);
             this.Controls.Add(this.txtZbBottom);
@@ -1224,6 +1235,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnMoveUpZ2;
         private System.Windows.Forms.Button btnMoveDownZ2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnResetxBotA;
+        private System.Windows.Forms.Button btnResetxBotB;
     }
 }

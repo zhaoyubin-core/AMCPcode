@@ -239,8 +239,10 @@ namespace AMCP
             public string Para6;
             public string Para7;
             public string Para8;
-            public string Para9;
-            public string Para10;
+            public string Para9;//layer
+            public string Para10;//gcode
+            public string Para11;//index工件索引，用于显示当前打印工件
+            public string Para12;//printPos打印位置索引，用于显示当前打印位置
             public double EstimateTime;
         };
         //打印工作状态类型
