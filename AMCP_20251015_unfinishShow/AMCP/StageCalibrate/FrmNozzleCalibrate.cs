@@ -5,7 +5,6 @@ using Emgu.CV.Structure;
 using GxIAPINET;
 using OpenCvSharp;
 using OpenCvSharp.Flann;
-using PMCLIB;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +14,6 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -43,7 +41,6 @@ namespace AMCP
         public FrmNozzleCalibrate()
         {
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.Dpi;
             arr_txtPosHeight = new TextBox[] { txtPosHeightA, txtPosHeightB };
             arr_chkPrintPos = new CheckBox[] { chkPrintPosA, chkPrintPosB };
         }
@@ -2106,288 +2103,55 @@ namespace AMCP
             //lblNoticeOP2.Text = "";
             //lblNoticeOP3.Text = "";
         }
-        double PlanerMotorX = 240;
-        double PlanerMotorY = 150;
+
 
         //移动到基底测量位置(动子中心）
-        private async void btnGoPrintPos_Click(object sender, EventArgs e)
+        private void btnGoPrintPos_Click(object sender, EventArgs e)
         {
             try
             {
-                XBotCommands _xbotCommand = new XBotCommands();
-                _xbotCommand.SixDofMotionSI(1, 1, PlanerMotorX / GV.PMC.M2MM, PlanerMotorY / GV.PMC.M2MM, 1 / GV.PMC.M2MM, 0, 0, 0);
-                await Task.Delay(1000);
+                if (tmrOP1_MeasureBase.Enabled)//进入调平流程，点击则停止
+                {
+                    lblNoticeProgress.BackColor = Color.Transparent;
+                    tmrOP1_MeasureBase.Stop();
+                    GV.StopImmediately();
+                    // btnNozzleCali.Text = "开始校针";
+                    lblNoticeProgress.Text = "";
+                    return;
+                }
+                else
+                {
+                    tmrOP1_MeasureBase.Start();//进入调平流程
+                }
 
-                await MessureOriginal();//用于移动龙门至位移传感器量程内
+                double x0, y0, z0, z0A, z0B;
+                x0 = (double)nmud_OP1_X.Value;//1号工位的位置
+                y0 = (double)nmud_OP1_Y.Value;
+                z0 = (double)nmud_OP1_Z.Value;
+
+                double xTarget = x0, yTarget = y0, zTarget = z0;
+
+                if (DialogResult.OK == MessageBox.Show("确定移动到工位的打印起始坐标 (" + xTarget.ToString("0.0") + ", "
+                    + yTarget.ToString("0.0") + "," + zTarget.ToString("0.000") + ") 吗？", "请注意", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation))
+                {
+                    Move2ReadyPos(xTarget, yTarget, zTarget, "正在前往共焦点", GV.Z_TOP);
+                }
                 GV.PrintingObj.qWaitMoveEnd();
-                lblNoticeProgress.Text = "移动至测量位置完成，开始测量";
-                await Messure5Points();
-                await Task.Delay(500);//确保采集时动子到位
-                await Test5Points();
+
+                ////精细对焦
+                //double originalH = valueDistanceA;//当前测量数值
+                //if (Math.Abs(originalH) > 0.1 && !double.IsInfinity(originalH))
+                //{
+                //    double zLiDan = GV.PrintingObj.Status.fPosZ + originalH;
+                //    GV.PrintingObj.qMoveAxisTo(GV.Z, zLiDan, 3, GV.PrintingObj.Status.fPosZ);
+                //}
+
+                GV.PrintingObj.qWaitMoveEnd();
+
             }
             catch (Exception ex)
             {
             }
-        }
-        private async Task Messure5Points()
-        {
-            // 确保测量点已生成
-            if (measurePoints == null || measurePoints.Length < 5)
-            {
-                GetMeasurePoint();
-                if (measurePoints == null || measurePoints.Length < 5)
-                {
-                    MessageBox.Show("测量点未生成或数量不足。");
-                    return;
-                }
-            }
-            // 清空列表，准备写入Point1~Point5
-            if (listBoxOriginal.InvokeRequired)
-                listBoxOriginal.Invoke(new Action(() => listBoxOriginal.Items.Clear()));
-            else
-                listBoxOriginal.Items.Clear();
-
-            XBotCommands _xbotCommand = new XBotCommands();
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[0].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[0].Y, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qWaitMoveEnd();
-            double Point1 = CeLiang();
-            AppendPointToList(0, Point1);
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[1].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[1].Y, 60, GV.PrintingObj.Status.fPosY);
-
-            await Task.Delay(3000);//确保采集时龙门到位
-            GV.PrintingObj.qWaitMoveEnd();
-            double Point2 = CeLiang();
-            AppendPointToList(1, Point2);
-            //corner1.Text = Corner1.ToString("F3");
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[2].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[2].Y, 60, GV.PrintingObj.Status.fPosY);
-            await Task.Delay(4000);//确保采集时龙门到位
-            GV.PrintingObj.qWaitMoveEnd();
-            double Point3 = CeLiang();
-            AppendPointToList(2, Point3);
-            //corner2.Text = Corner2.ToString("F3");
-
-            
-           
-            GV.PrintingObj.qWaitMoveEnd();
-
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[3].X, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[3].Y, 60, GV.PrintingObj.Status.fPosY);
-            await Task.Delay(4000);//确保采集时龙门到位
-            GV.PrintingObj.qWaitMoveEnd();
-            double Point4 = CeLiang();
-            AppendPointToList(3, Point4);
-            //corner3.Text = Corner3.ToString("F3");
-
-
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[4].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[4].Y, 60, GV.PrintingObj.Status.fPosY);
-            await Task.Delay(4000);//确保采集时龙门到位
-            GV.PrintingObj.qWaitMoveEnd();
-            double Point5 = CeLiang();
-            AppendPointToList(4, Point5);
-            //corner4.Text = Corner4.ToString("F3");
-
-            double MiddlePoint1= (Point3 + Point2) / 2;
-            double MiddlePoint2= (Point4 + Point5) / 2;
-            double MiddlePoint3 =(Point2 + Point5) / 2;
-            double MiddlePoint4 = (Point4 + Point3) / 2;
-
-            double RotY = Math.Atan((MiddlePoint3 - MiddlePoint4) / 160);
-            if (Math.Abs(RotY) * 1000 > 0.02)
-            {
-                _xbotCommand.SixDofMotionSI(1, 1, PlanerMotorX / GV.PMC.M2MM, PlanerMotorY / GV.PMC.M2MM, 1 / GV.PMC.M2MM, 0, RotY, 0);
-            }
-
-            double RotX = Math.Atan((MiddlePoint1 - MiddlePoint2) / 160);
-            if (Math.Abs(RotX) * 1000 > 0.02)
-            {
-                _xbotCommand.SixDofMotionSI(1, 1, PlanerMotorX / GV.PMC.M2MM, PlanerMotorY / GV.PMC.M2MM, 1 / GV.PMC.M2MM, RotX, RotY, 0);
-            }
-            await Task.Delay(500);//确保采集时动子到位
-
-
-        }
-        private void AppendPointToList(int idx, double value)
-        {
-            if (measurePoints == null || idx < 0 || idx >= measurePoints.Length) return;
-
-            var mp = measurePoints[idx];
-            // 使用已有的Z1（若已记录），否则回退到Z
-            double zShow = (mp.Z1 > -1) ? mp.Z1 : mp.Z;
-
-            string valText = (!double.IsNaN(value) && !double.IsInfinity(value)) ? value.ToString("0.0000") : "?";
-
-            string line;
-            if (rdbNozzle1.Checked)
-            {
-                // 右喷头显示为 B
-                line = $"B; ({mp.X:000},{mp.Y:000},{zShow:000.0}): {valText}";
-            }
-            else
-            {
-                // 左喷头显示为 A
-                line = $"A; ({mp.X:000},{mp.Y:000},{zShow:000.0}): {valText}";
-            }
-
-            if (listBoxOriginal.InvokeRequired)
-                listBoxOriginal.Invoke(new Action(() => listBoxOriginal.Items.Add(line)));
-            else
-                listBoxOriginal.Items.Add(line);
-        }
-        private async Task Test5Points()
-        {
-            // 若没有生成测量点，尝试生成
-            if (measurePoints == null || measurePoints.Length < 5)
-            {
-                GetMeasurePoint();
-                if (measurePoints == null || measurePoints.Length < 5)
-                {
-                    MessageBox.Show("测量点未生成或数量不足。");
-                    return;
-                }
-            }
-
-            // 清空“最新结果”列表
-            if (listBoxLastest.InvokeRequired)
-                listBoxLastest.Invoke(new Action(() => listBoxLastest.Items.Clear()));
-            else
-                listBoxLastest.Items.Clear();
-
-            // 确保为异步方法（避免编译器警告）
-            await Task.Yield();
-
-            // 依次移动到5个点，测量并写入 listBoxLastest
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[0].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[0].Y, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qWaitMoveEnd();
-            await Task.Delay(4000);//确保采集时龙门到位
-            double p1 = CeLiang();
-            AppendPointToLastest(0, p1);
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[1].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[1].Y, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qWaitMoveEnd();
-            await Task.Delay(4000);//确保采集时龙门到位
-            double p2 = CeLiang();
-            AppendPointToLastest(1, p2);
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[2].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[2].Y, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qWaitMoveEnd();
-            await Task.Delay(4000);//确保采集时龙门到位
-            double p3 = CeLiang();
-            AppendPointToLastest(2, p3);
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[3].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[3].Y, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qWaitMoveEnd();
-            await Task.Delay(4000);//确保采集时龙门到位
-            double p4 = CeLiang();
-            AppendPointToLastest(3, p4);
-
-            GV.PrintingObj.qMoveAxisTo(GV.X, measurePoints[4].X, 60, GV.PrintingObj.Status.fPosX);
-            GV.PrintingObj.qMoveAxisTo(GV.Y, measurePoints[4].Y, 60, GV.PrintingObj.Status.fPosY);
-            GV.PrintingObj.qWaitMoveEnd();
-            await Task.Delay(4000);//确保采集时龙门到位
-            double p5 = CeLiang();
-            AppendPointToLastest(4, p5);
-        }
-
-        private void AppendPointToLastest(int idx, double value)
-        {
-            if (measurePoints == null || idx < 0 || idx >= measurePoints.Length) return;
-
-            var mp = measurePoints[idx];
-            // 使用已有的Z1（若已记录），否则回退到Z
-            double zShow = (mp.Z1 > -1) ? mp.Z1 : mp.Z;
-
-            string valText = (!double.IsNaN(value) && !double.IsInfinity(value)) ? value.ToString("0.0000") : "?";
-
-            string line;
-            if (rdbNozzle1.Checked)
-            {
-                // 右喷头显示为 B
-                line = $"B; ({mp.X:000},{mp.Y:000},{zShow:000.0}): {valText}";
-            }
-            else
-            {
-                // 左喷头显示为 A
-                line = $"A; ({mp.X:000},{mp.Y:000},{zShow:000.0}): {valText}";
-            }
-
-            if (listBoxLastest.InvokeRequired)
-                listBoxLastest.Invoke(new Action(() => listBoxLastest.Items.Add(line)));
-            else
-                listBoxLastest.Items.Add(line);
-        }
-        private async Task MessureOriginal()
-        {
-            double x0, y0, z0, z0A, z0B;
-            x0 = (double)nmud_OP1_X.Value;//1号工位的位置
-            y0 = (double)nmud_OP1_Y.Value;
-            z0 = (double)nmud_OP1_Z.Value;
-            double xTarget = x0, yTarget = y0, zTarget = z0;
-            if (GV.PrintingObj.Status.fPosX - xTarget > 1 || GV.PrintingObj.Status.fPosX - xTarget < -1)
-            {
-                GV.PrintingObj.qMoveAxisTo(GV.X, xTarget, 60, GV.PrintingObj.Status.fPosX);
-
-            }
-            if (GV.PrintingObj.Status.fPosY - yTarget > 1 || GV.PrintingObj.Status.fPosY - yTarget < -1)
-            {
-                GV.PrintingObj.qMoveAxisTo(GV.Y, yTarget, 60, GV.PrintingObj.Status.fPosY);
-            }
-            if (GV.PrintingObj.Status.fPosZ != zTarget)
-            {
-                GV.PrintingObj.qMoveAxisTo(GV.Z, zTarget, 20, GV.PrintingObj.Status.fPosZ);
-            }
-
-            GV.PrintingObj.qWaitMoveEnd();
-            await Task.Delay(4000);//确保采集时龙门已到位
-            double originalH = CeLiang();
-            if (originalH > 0.1 || originalH < -0.1 || double.IsInfinity(originalH))
-            {
-                double zLiDan = GV.PrintingObj.Status.fPosZ + originalH;
-                GV.PrintingObj.qMoveAxisTo(GV.Z, zLiDan, 10, GV.PrintingObj.Status.fPosZ);
-            }
-            await Task.Delay(500);//确保采集时z轴已到位
-            GV.PrintingObj.qWaitMoveEnd();
-
-
-        }
-
-        private double CeLiang()
-        {
-            double[] measurement_data = null;
-            double lianxudata = double.NaN; // 默认返回NaN表示无效值
-
-            // 1) 读取一次数据
-            var err = protocol.GetSingleData(controller_idx, ref measurement_data);
-            if (err == ERRCODE.OK && measurement_data != null && measurement_data.Length > 1)
-            {
-                lianxudata = measurement_data[1];
-
-                // 2) 合法性检查
-                if (!double.IsNaN(lianxudata) &&
-                    !double.IsInfinity(lianxudata) &&
-                    lianxudata > -10 && lianxudata < 10)
-                {
-                    // 3) 线程安全地写入数据列表
-                    lock (dataList)
-                    {
-                        dataList.Add(lianxudata);
-                    }
-                }
-
-            }
-
-            // 返回本次测得的数值
-            return lianxudata;
         }
 
         /// <summary>
@@ -2454,7 +2218,7 @@ namespace AMCP
             // 第4步：非常慢速将Z轴降至目标位置
             GV.PrintingObj.qMoveAxisTo(GV.Z, zt, vZdown2, 0);
             GV.PrintingObj.qWaitMoveEnd();
-
+           
             timeEstimate += (dNear / vZdown2);  // 耗时估算
 
             timeEstimate += 2;
@@ -2465,7 +2229,6 @@ namespace AMCP
         double[] arrPointA = new double[5];
         private void btnMeasureBase_Click(object sender, EventArgs e)//位移笔/光谱共焦测基底
         {
-
             int tsetType = 0;
             try
             {
@@ -2473,78 +2236,99 @@ namespace AMCP
                 {
                     case 0://非接触式
                         {
-
-                            if (measurePoints != null)
+                         
+                            if (listBox1.Items.Count > 0 && measurePoints.Length > 0)
                             {
                                 ShowMeasurePoints();//将测量点展示到listbox1
-                                listBoxOriginal.SelectedIndex = 0;
+                                listBox1.SelectedIndex = 0;
                                 double x, y, z;
                                 x = measurePoints[0].X;
                                 y = measurePoints[0].Y;
-                                z = GV.PrintingObj.Status.fPosZ;
-                                double[] xx = null, yy = null, zz = null, zzUp = null;
-                                xx = new double[measurePoints.Length];
-                                yy = new double[measurePoints.Length];
-                                //zzUp = new double[measurePoints.Length];
-                                //zz = new double[measurePoints.Length];
+                                z = measurePoints[0].Z;
 
-                                for (int i = 0; i < measurePoints.Length; i++)
+                                if (DialogResult.OK == MessageBox.Show("确定移动到第一个测量点上方位置: (" + x.ToString("0") + ", "
+                                    + y.ToString("0") + "," + z.ToString("0") + ") 开始整个测试过程吗？\r\n\r\n"
+                                    + "如果您之前没有把握测量点位置安全，请点击“取消”按钮。", "请注意", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation))
                                 {
-                                    xx[i] = measurePoints[i].X;
-                                    yy[i] = measurePoints[i].Y;
-                                    //zz[i] = measurePoints[i].Z;
-                                    //zzUp[i] = measurePoints[i].ZUp;
-                                }
-                                GV.valueDisplacementSensor_rA = 0;
-                                GV.PrintingObj.qDisplayInfo("DetectPercent", "0");
-
-                                string strMsg = "下面将依次测量列表中的点：";
-                                bool bOverLimit = false; // 记录是否有测量点越界
-                                for (int i = 0; i < xx.Length; i++)
-                                {
-                                    strMsg += "(" + xx[i].ToString() + ", " + yy[i].ToString() + "), ";
-                                    if (xx[i] < 0 || xx[i] > 480 || yy[i] < 0 || yy[i] > 750)
-                                    {
-                                        bOverLimit = true;
-                                    }
-                                }
-                                if (bOverLimit)
-                                {
-                                    strMsg += "\r\n\r\n注意：存在超越边界的测量点，请调整测量点坐标。";
-                                    MessageBox.Show(strMsg, "警示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    return;
+                                    Move2ReadyPos(x, y, z, "测量中...", GV.Z_TOP);
                                 }
                                 else
-                                {
-                                    strMsg += "\r\n\r\n确认测量这些点吗？";
-                                }
-
-
-
-
-                                if (DialogResult.OK != MessageBox.Show(strMsg, "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information))
                                 {
                                     return;
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("measurePoints为空值");
-
                                 return;
                             }
+                            double[] xx = null, yy = null, zz = null, zzUp = null;
+                            xx = new double[measurePoints.Length];
+                            yy = new double[measurePoints.Length];
+                            //zzUp = new double[measurePoints.Length];
+                            zz = new double[measurePoints.Length];
 
+                            for (int i = 0; i < measurePoints.Length; i++)
+                            {
+                                xx[i] = measurePoints[i].X;
+                                yy[i] = measurePoints[i].Y;
+                                zz[i] = measurePoints[i].Z;
+                                //zzUp[i] = measurePoints[i].ZUp;
+                            }
+                            GV.valueDisplacementSensor_rA = 0;
+                            GV.PrintingObj.qDisplayInfo("DetectPercent", "0");
 
+                            string strMsg = "下面将依次测量列表中的点：";
+                            bool bOverLimit = false; // 记录是否有测量点越界
+                            for (int i = 0; i < xx.Length; i++)
+                            {
+                                strMsg += "(" + xx[i].ToString() + ", " + yy[i].ToString() + "), ";
+                                if (xx[i] < 0 || xx[i] > 480 || yy[i] < 0 || yy[i] > 750)
+                                {
+                                    bOverLimit = true;
+                                }
+                            }
+                            if (bOverLimit)
+                            {
+                                strMsg += "\r\n\r\n注意：存在超越边界的测量点，请调整测量点坐标。";
+                                MessageBox.Show(strMsg, "警示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return;
+                            }
+                            else
+                            {
+                                strMsg += "\r\n\r\n确认测量这些点吗？";
+                            }
+                            if (DialogResult.OK != MessageBox.Show(strMsg, "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Information))
+                            {
+                                return;
+                            }
+                            
 
-                            break;
+                            double vXY = 40;
+                            GV.PrintingObj.qDisplayInfo("DetectPercent", "0");
+                            //GV.PrintingObj.qDisplayInfo("Notice", "正在测量");
+
+                            GV.PrintingObj.listDisplacementLiDanRecord.Clear();//记录数据
+                            GV.PrintingObj.listDistanceRecordValue.Clear();
+                            for (int i = 0; i < xx.Length; i++)
+                            {
+                                GV.PrintingObj.qMoveXYTo(xx[i], yy[i], vXY, 0, 0); // 平移
+                                GV.PrintingObj.qWaitMoveEnd();
+                                GV.PrintingObj.qRecordDisplacement(i);
+                            }
+                            GV.PrintingObj.qDisplayInfo("Notice", "测量完成", "Green");
+
+                            GV.PrintingObj.qMoveXYTo(xx[0], yy[0], vXY, 0, 0); // 平移
+                            GV.PrintingObj.qWaitMoveEnd();
+                            
+                            break;                     
                         }
                     case 1://接触式对针
                         {
                             GV.PrintingObj.PushDownPenSensor();//伸出位移笔
-                            if (listBoxOriginal.Items.Count > 0 && measurePoints.Length > 0)
+                            if (listBox1.Items.Count > 0 && measurePoints.Length > 0)
                             {
                                 ShowMeasurePoints();//将测量点展示到listbox1
-                                listBoxOriginal.SelectedIndex = 0;
+                                listBox1.SelectedIndex = 0;
                                 GV.PrintingObj.PushDownPenSensor();
                                 double x, y, z;
                                 x = measurePoints[0].X;
@@ -2641,7 +2425,7 @@ namespace AMCP
                             }
                             GV.PrintingObj.qMoveAxisTo(GV.Z, GV.Z_TOP, vZup, 0);
                             strDisplace = "";
-
+                            tmrOP1_MeasureBase.Start();
                         }
                         break;
                 }
@@ -2652,7 +2436,7 @@ namespace AMCP
         }
         private void ShowMeasurePoints(int stage = 1)
         {
-            listBoxOriginal.Items.Clear();
+            listBox1.Items.Clear();
             if (stage == 1)
             {
                 if (measurePoints != null)
@@ -2661,7 +2445,7 @@ namespace AMCP
                     {
                         measurePoints[i].D1 = -1;
                         measurePoints[i].D2 = -1;
-                        listBoxOriginal.Items.Add(measurePoints[i].ToListText((i + 1)));
+                        listBox1.Items.Add(measurePoints[i].ToListText((i + 1)));
                     }
                 }
             }
@@ -3111,7 +2895,14 @@ namespace AMCP
 
         public void ReadOPXYZ()//读取坐标
         {
-
+            nmud_OP1_X.Value = (decimal)GV.OP1_X;
+            nmud_OP1_Y.Value = (decimal)GV.OP1_Y;
+            nmud_OP1_Z.Value = (decimal)GV.OP1_Z;
+            num_OP2_X.Value = (decimal)GV.OP2_X;
+            num_OP2_Y.Value = (decimal)GV.OP2_Y;
+            num_OP2_Z.Value = (decimal)GV.OP2_Z;
+            num_RangeX.Value = (decimal)(GV.OP1_dX / 2.0);
+            num_RangeY.Value = (decimal)(GV.OP1_dY / 2.0);
 
             //nmud_OP3_X.Value = (decimal)GV.OP3_X;
             //nmud_OP3_Y.Value = (decimal)GV.OP3_Y;
@@ -3150,54 +2941,44 @@ namespace AMCP
             WriteOPXYZ();
         }
 
-        /*private void btnAdjustXbotRot_Click(object sender, EventArgs e)
+        private void btnAdjustXbotRot_Click(object sender, EventArgs e)
         {
             if (tmrOP1_MeasureBase.Enabled)
             {
                 tmrOP1_MeasureBase.Stop();
-            }*/
+            }
 
-        /* double rxA = Convert.ToDouble(txtRxA.Text) / GV.PMC.Rad2Degree, ryA = Convert.ToDouble(txtRyA.Text) / GV.PMC.Rad2Degree,
-                rxB = Convert.ToDouble(txtRxB.Text) / GV.PMC.Rad2Degree, ryB = Convert.ToDouble(txtRyB.Text) / GV.PMC.Rad2Degree;*//*
+            double rxA = Convert.ToDouble(txtRxA.Text) / GV.PMC.Rad2Degree, ryA = Convert.ToDouble(txtRyA.Text) / GV.PMC.Rad2Degree,
+                   rxB = Convert.ToDouble(txtRxB.Text) / GV.PMC.Rad2Degree, ryB = Convert.ToDouble(txtRyB.Text) / GV.PMC.Rad2Degree;
+           
+            double tolerance = 0.000001;
+            bool isRxAEqual = Math.Abs(rxA - GV.adjustRxA) < tolerance;
+            bool isRyAEqual = Math.Abs(ryA - GV.adjustRyA) < tolerance;
 
-         double tolerance = 0.000001;
- *//*        bool isRxAEqual = Math.Abs(rxA - GV.adjustRxA) < tolerance;
-         bool isRyAEqual = Math.Abs(ryA - GV.adjustRyA) < tolerance;
+            //rxA = GV.adjustRxA; ryA = GV.adjustRyA ; rxB = GV.adjustRyB ; ryB = GV.adjustRyB ;
+            if (chkPrintPosA.Checked && (!isRxAEqual || !isRyAEqual))
+            {
+                 GV.adjustRxA = rxA;
+                 GV.adjustRyA = ryA;
 
-         //rxA = GV.adjustRxA; ryA = GV.adjustRyA ; rxB = GV.adjustRyB ; ryB = GV.adjustRyB ;
-         if (chkPrintPosA.Checked && (!isRxAEqual || !isRyAEqual))
-         {
-              GV.adjustRxA = rxA;
-              GV.adjustRyA = ryA;
-
-             if (Math.Abs(rxA) * 1000 > 0.002)//mRad
-             {
-                 GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 2, GV.PMC.Rx, rxA, "AdjustRotX");//  
-                                                                                                      //GV.PrintingObj.MoveXbotXYrotary(GV.PMC.arrXBotIds[0], GV.PMC.Y, RotX, 3);
-                 GV.PrintingObj.qPause(500);
-             }
-             // 调节Y方向旋转（绕Y轴）
-             if (Math.Abs(ryA) * 1000 > 0.002)
-             {
-                 GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 2, GV.PMC.Ry, ryA, "AdjustRotY");
-                 GV.PrintingObj.qPause(500);
-             }*/
-        /*}*//*
-    }*/
+                if (Math.Abs(rxA) * 1000 > 0.002)//mRad
+                {
+                    GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 2, GV.PMC.Rx, rxA, "AdjustRotX");//  
+                                                                                                         //GV.PrintingObj.MoveXbotXYrotary(GV.PMC.arrXBotIds[0], GV.PMC.Y, RotX, 3);
+                    GV.PrintingObj.qPause(500);
+                }
+                // 调节Y方向旋转（绕Y轴）
+                if (Math.Abs(ryA) * 1000 > 0.002)
+                {
+                    GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 2, GV.PMC.Ry, ryA, "AdjustRotY");
+                    GV.PrintingObj.qPause(500);
+                }
+            }
+        }
 
         private void num_dNozzle_ValueChanged(object sender, EventArgs e)
         {
             //同步到motionAdjust
-
-        }
-
-        private void lblNoticeProgress_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nmud_OP1_Z_ValueChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -3209,14 +2990,14 @@ namespace AMCP
             {
                 valueDistanceA = CatchDistanceSensorValue();
 
-                if (Math.Abs(valueDistanceA) <= 2.5)
+                if (Math.Abs(valueDistanceA ) <= 2.5)
                 {
                     GV.valueDisplacementSensor_rA = valueDistanceA;
                     lblLidanValueA.Text = valueDistanceA.ToString("0.0000");//显示精度0.1微
                 }
                 else
                 {
-                    lblLidanValueA.Text = "超出量程";//显示精度0.1微
+                    lblLidanValueA.Text ="超出量程";//显示精度0.1微
                 }
             }
             catch (Exception ex)
@@ -3296,12 +3077,12 @@ namespace AMCP
             //{
             //    if (bPrintPosSelected[j])
             //    {
-
+                   
             //    }
             //}
             // GetTargetXYZPrintPos(j, xTarget0, yTarget0, out xTarget, out yTarget);
-
-            listMeasurePoint.Add(new MeasurePoint(xTarget, yTarget, zTarget, Math.Floor(zTarget - hSafe2), bPrintPosSelected[0], bPrintPosSelected[1]));
+           
+            listMeasurePoint.Add(new MeasurePoint(xTarget, yTarget, zTarget, Math.Floor(zTarget - hSafe2),bPrintPosSelected[0],bPrintPosSelected[1]));
             listMeasurePoint.Add(new MeasurePoint(xTarget - rx, yTarget - ry, zTarget, Math.Floor(zTarget - hSafe1), bPrintPosSelected[0], bPrintPosSelected[1]));//左右
             listMeasurePoint.Add(new MeasurePoint(xTarget + rx, yTarget - ry, zTarget, Math.Floor(zTarget - hSafe1), bPrintPosSelected[0], bPrintPosSelected[1]));
 
@@ -3331,8 +3112,89 @@ namespace AMCP
             }
         }
 
+        private void tmrOP1_MeasureBase_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                string notice = "";
+                string color = "";
+                GV.PrintingObj.GetNoticeInfo( out notice,out color);
+                lblNoticeProgress.Text = "当前状态：" + notice;
+                lblNoticeProgress.BackColor = ColorTranslator.FromHtml(color);
 
+                //获取点，测量组调节一次
+                //GV.PrintingObj.GetBaseDetectPercent(out percent, out strNotice);
+                int countMeasuresd = GV.PrintingObj.listDisplacementLiDanRecord.Count;
+                if (countMeasuresd < measurePoints.Length)
+                {
+                    listBox1.SelectedIndex = countMeasuresd;
+                }
+                for (int iPoint = 0; iPoint < countMeasuresd; iPoint++)
+                {
+                    strLines = GV.PrintingObj.listDisplacementLiDanRecord[iPoint].Split(',');
+                    if (strLines != null)
+                    {
+                        if (strLines.Length == 4)
+                        {
+                            if (-1 == measurePoints[iPoint].D1) // 得到一个新的测量数据
+                            {
+                                measurePoints[iPoint].X1 = Convert.ToDouble(strLines[0]);
+                                measurePoints[iPoint].Y1 = Convert.ToDouble(strLines[1]);
+                                measurePoints[iPoint].Z1 = Convert.ToDouble(strLines[2]);
+                                measurePoints[iPoint].D1 = Convert.ToDouble(strLines[3]);
+                                listBox1.Items[iPoint] = measurePoints[iPoint].ToListText(iPoint + 1);
+                            }
+                        }
+                    }
+                }
+                if (countMeasuresd == 5)
+                {
+                    double iDistance = 0;
+                    double iAdjust = GV.PrintingObj.listDistanceRecordValue[0];//测量值为正值应将z向下调节
+                    GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 1, GV.Z, iAdjust, "AdjustToPeakValue");//调节到峰值
+                    GV.PrintingObj.qWaitMoveEnd();
 
+                    double topLeftA = GV.PrintingObj.listDistanceRecordValue[1];    // 左上角
+                    double topRightA = GV.PrintingObj.listDistanceRecordValue[2];   // 右上角  
+                    double bottomRightA = GV.PrintingObj.listDistanceRecordValue[3]; // 右下角
+                    double bottomLeftA = GV.PrintingObj.listDistanceRecordValue[4];// 左下角
+
+                    double leftAvg = (topLeftA + bottomLeftA) / 2;
+                    double rightAvg = (topRightA + bottomRightA) / 2;
+                    double RotY = Math.Atan((leftAvg - rightAvg) / GV.OP1_dX);
+
+                    double topAvg = (topLeftA + topRightA) / 2;
+                    double bottomAvg = (bottomLeftA + bottomRightA) / 2;
+                    double RotX = Math.Atan((topAvg - bottomAvg) / GV.OP1_dY);
+
+                    //GV.adjustRxA = RotX;
+                    //GV.adjustRyA = RotY;
+
+                    //显示测量计算值
+                    txtRxA.Text = (RotX * GV.PMC.Rad2Degree).ToString("0.000");
+                    txtRyA.Text = (RotY * GV.PMC.Rad2Degree).ToString("0.000");
+
+                    //if (Math.Abs(RotX) * 1000 > 0.002)
+                    //{
+                    //    GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 2, GV.PMC.Rx, RotX, "AdjustRotX");//  
+                    //                                                                                          //GV.PrintingObj.MoveXbotXYrotary(GV.PMC.arrXBotIds[0], GV.PMC.Y, RotX, 3);
+                    //    GV.PrintingObj.qPause(500);
+                    //}
+                    //// 调节Y方向旋转（绕Y轴）
+                    //if (Math.Abs(RotY) * 1000 > 0.002)
+                    //{
+                    //    GV.PrintingObj.qAdjustPMmotor(GV.PMC.arrXBotIds[0], 2, GV.PMC.Ry, RotY, "AdjustRotY");
+                    //    GV.PrintingObj.qPause(500);
+                    //}
+                    //测量完成，不再
+                    tmrOP1_MeasureBase.Stop();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         //对针
         private void btnNozzleCali_Click(object sender, EventArgs e)
         {
@@ -3371,7 +3233,7 @@ namespace AMCP
 
                         GV.PrintingObj.qWaitMoveEnd();
                         GV.PrintingObj.qDisplayInfo("Notice", "已到达对焦位置", "Green");
-
+                                       
                         btnNozzleCalibrate.Text = "停止校针";
                     }
                 }
@@ -3418,7 +3280,7 @@ namespace AMCP
                 GV.Z_BOTTOM = iTargetZ;
 
 
-                // tmrOP2_CalibrateNozzle.Stop();
+               // tmrOP2_CalibrateNozzle.Stop();
             }
         }
 
@@ -3451,9 +3313,9 @@ namespace AMCP
                 string fileSavePath = Path.Combine(debugFolderPath, stfFileName); // Replace with your actual filename
                 m_objGxBitmap.SaveBmp(objIFrameData, fileSavePath);
 
-                // GV.PrintingObj.qDisplayInfo("Notice", "图片处理中...", "Orange");
-                //// Color.Orange;
-                // GV.PrintingObj.qPause(1000);//预埋sleep
+               // GV.PrintingObj.qDisplayInfo("Notice", "图片处理中...", "Orange");
+               //// Color.Orange;
+               // GV.PrintingObj.qPause(1000);//预埋sleep
                 //保存完后处理
                 ProcessImage(fileSavePath);
             }
@@ -3598,9 +3460,9 @@ namespace AMCP
                     //strA = stage + index.ToString("00") + ". P" + (numPrintPos) + " (" + this.X.ToString("000") + "," + this.Y.ToString("000") + "," + this.Z.ToString("000.0") + "): ";
                     str = "A; (" + this.X.ToString("000") + "," + this.Y.ToString("000") + "," + this.Z.ToString("000.0") + "): ";
                     str += "?";
-                    str += " ,B: ?";
+                    str += " ,B: ?"; 
                 }
-            }
+            }                   
             //string str;
             //if (measureValue > -1)
             //{
@@ -3616,7 +3478,7 @@ namespace AMCP
             //    str = index.ToString("00") + ". P" + (numPrintPos) + " (" + this.X.ToString("000") + "," + this.Y.ToString("000") + "," + this.Z.ToString("000.0") + "): ";
             //    str += "?";
             //}
-            return str;
+            return str;                    
         }
 
         public string ToPoint()
